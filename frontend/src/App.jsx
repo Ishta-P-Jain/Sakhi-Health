@@ -1,11 +1,18 @@
 
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import './App.css'
 import { useNavigate, useLocation } from 'react-router-dom'
 import ChatPanel from './features/chatbot/ChatPanel.jsx'
 import HealthcareFinder from './features/healthcare/HealthcareFinder.jsx'
 import { finderNavLabel } from './features/healthcare/strings.js'
 import { useChat } from './hooks/useChat.js'
+import { fetchMe, setAuthToken, clearAuthToken, setOnUnauthenticated } from './services/api.js'
+import Login from './components/Login.jsx'
+import Register from './components/Register.jsx'
+import HealthTracker from './features/health/HealthTracker.jsx'
+import Symptoms from './features/symptoms/Symptoms.jsx'
+import Reminders from './features/reminders/Reminders.jsx'
+import Reports from './features/reports/Reports.jsx'
 
 const translations = {
   English: {
@@ -885,31 +892,82 @@ function App() {
   const [selectedTopic, setSelectedTopic] = useState("All");
   const [expandedTopic, setExpandedTopic] = useState("");
   const activeLearnTopic = topics.find((topic) => topic.name === expandedTopic)
-const navigate = useNavigate()
-const location = useLocation()
-const [periodDays, setPeriodDays] = useState([]);
-const [wellnessMood, setWellnessMood] = useState("Okay");
-const [wellnessSymptoms, setWellnessSymptoms] = useState([]);
-const [wellnessNotes, setWellnessNotes] = useState("");
 
-const [wellnessDate, setWellnessDate] = useState(
-  new Date().toLocaleDateString("en-CA")
-);
+  // Authentication state
+  const [user, setUser] = useState(null)
+  const [token, setToken] = useState(() => localStorage.getItem('sakhi_token'))
+  const [authPage, setAuthPage] = useState(null)
+  const [authLoading, setAuthLoading] = useState(true)
 
-// Chat is now backed by the FastAPI /api/chat endpoint (see hooks/useChat.js).
-// If the API is unreachable we fall back to the original canned replies below.
-const offlineReply = useCallback((text) => {
-  const replyKey = determineReplyKey(text)
-  return { replyKey, text: getReplyText(replyKey, language) }
-}, [language])
-const chat = useChat({ language, offlineReply })
-const sendChatMessage = chat.send
-const renderChatText = (message) =>
-  message.replyKey ? getReplyText(message.replyKey, language) || message.text : message.text
+  const handleLogin = (data) => {
+    setUser({ email: data.email })
+    setToken(data.token)
+    setAuthPage(null)
+  }
+
+  const handleRegister = (data) => {
+    setUser({ email: data.email })
+    setToken(data.token)
+    setAuthPage(null)
+  }
+
+  const handleLogout = () => {
+    clearAuthToken()
+    localStorage.removeItem('sakhi_token')
+    localStorage.removeItem('sakhi_user_email')
+    setUser(null)
+    setToken(null)
+    setAuthPage('login')
+  }
+
+  const loadUser = async () => {
+    const savedToken = localStorage.getItem('sakhi_token')
+    if (savedToken) {
+      setAuthToken(savedToken)
+      setToken(savedToken)
+      try {
+        const userData = await fetchMe()
+        setUser(userData)
+      } catch {
+        clearAuthToken()
+        localStorage.removeItem('sakhi_token')
+        setToken(null)
+      }
+    }
+    setAuthLoading(false)
+  }
+
+  useEffect(() => {
+    loadUser()
+    setOnUnauthenticated(() => {
+      handleLogout()
+    })
+  }, [])
+
+  const isAuthenticated = !!token && !!user
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  // Chat is now backed by the FastAPI /api/chat endpoint (see hooks/useChat.js).
+  // If the API is unreachable we fall back to the original canned replies below.
+  const offlineReply = useCallback((text) => {
+    const replyKey = determineReplyKey(text)
+    return { replyKey, text: getReplyText(replyKey, language) }
+  }, [language])
+  const chat = useChat({ language, offlineReply })
+  const sendChatMessage = chat.send
+  const renderChatText = (message) =>
+    message.replyKey ? getReplyText(message.replyKey, language) || message.text : message.text
 
   const routes = {
     home: '/',
+    login: '/login',
+    register: '/register',
     tracker: '/tracker',
+    symptoms: '/symptoms',
+    reminders: '/reminders',
+    reports: '/reports',
     learn: '/learn',
     assistant: '/assistant',
     finder: '/finder',
@@ -982,10 +1040,67 @@ const renderChatText = (message) =>
             <option>বাংলা</option>
           </select>
         </label>
+
+        {authLoading ? null : (
+          <div className="auth-actions">
+            {isAuthenticated ? (
+              <>
+                <span className="user-email">{user?.email}</span>
+                <button
+                  type="button"
+                  className="nav-link"
+                  onClick={handleLogout}
+                >
+                  Sign out
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  className="nav-link"
+                  onClick={() => { setAuthPage('login'); goTo('login') }}
+                >
+                  Sign in
+                </button>
+                <button
+                  type="button"
+                  className="nav-link"
+                  onClick={() => { setAuthPage('register'); goTo('register') }}
+                >
+                  Create account
+                </button>
+              </>
+            )}
+          </div>
+        )}
       </header>
 
       <main>
-      {location.pathname === '/' && (
+      {authLoading ? (
+        <div className="auth-page" style={{ padding: '40px', textAlign: 'center' }}>
+          Loading session…
+        </div>
+      ) : !isAuthenticated && (location.pathname === '/login' || location.pathname === '/register') ? (
+        <div className="auth-page">
+          {authPage === 'register' ? (
+            <Register onRegister={handleRegister} onSwitchToLogin={() => setAuthPage('login')} />
+          ) : (
+            <Login onLogin={handleLogin} onSwitchToRegister={() => setAuthPage('register')} />
+          )}
+        </div>
+      ) : !isAuthenticated ? (
+        <div className="auth-page" style={{ padding: '40px', textAlign: 'center' }}>
+          <p>Please sign in to continue.</p>
+          <button
+            type="button"
+            className="button-primary"
+            onClick={() => { setAuthPage('login'); goTo('login') }}
+          >
+            Sign in
+          </button>
+        </div>
+      ) : (
   <>
         <section className="hero" id="home">
           <div className="hero-copy">
@@ -1056,139 +1171,12 @@ const renderChatText = (message) =>
         </>
       )}
 
-  {location.pathname === '/tracker' && (
-  <>
-    <section className="section tracker-dashboard" >
-      <div className="section-heading">
-        <div>
-          <span className="section-kicker">{t.trackerKicker}</span>
-          <h2>{t.trackerHeading}</h2>
-      <p>
-        {t.trackerIntro}
-      </p>
-    </div>
-    <span className="heading-flower">✿</span>
-  </div>
+  {location.pathname === '/tracker' && <HealthTracker t={t} />}
 
-  <div className="tracker-grid">
-    <article className="tracker-panel">
-      <span className="tracker-kicker">{t.trackerPeriodKicker}</span>
-      <h3>{t.trackerPeriodTitle}</h3>
-      <p>{t.trackerPeriodDescription}</p>
-
-      <label className="tracker-label" htmlFor="period-date">
-        {t.trackerChooseDate}
-      </label>
-      <input
-        id="period-date"
-        className="tracker-input"
-        type="date"
-        value={wellnessDate}
-        onChange={(event) => setWellnessDate(event.target.value)}
-      />
-
-      <button
-        className="tracker-button"
-        onClick={() =>
-          setPeriodDays((days) =>
-            days.includes(wellnessDate)
-              ? days.filter((day) => day !== wellnessDate)
-              : [...days, wellnessDate].sort()
-          )
-        }
-        disabled={!wellnessDate}
-      >
-        {periodDays.includes(wellnessDate)
-          ? t.trackerRemovePeriodDay
-          : t.trackerMarkPeriodDay}
-      </button>
-
-      <div className="tracker-summary">
-        <strong>{periodDays.length}</strong>
-        <span>{periodDays.length === 1 ? t.trackerDateRecorded : t.trackerDatesRecorded}</span>
-      </div>
-
-      {periodDays.length > 0 && (
-        <ul className="tracker-date-list">
-          {periodDays.map((day) => (
-            <li key={day}>{day}</li>
-          ))}
-        </ul>
-      )}
-    </article>
-
-    <article className="tracker-panel">
-      <span className="tracker-kicker">{t.trackerWellnessKicker}</span>
-      <h3>{t.trackerWellnessTitle}</h3>
-      <p>{t.trackerWellnessDescription}</p>
-
-      <label className="tracker-label" htmlFor="wellness-mood">
-        {t.trackerMood}
-      </label>
-      <select
-        id="wellness-mood"
-        className="tracker-input"
-        value={wellnessMood}
-        onChange={(event) => setWellnessMood(event.target.value)}
-      >
-        <option value="Great">{t.trackerMoodGreat}</option>
-        <option value="Good">{t.trackerMoodGood}</option>
-        <option value="Okay">{t.trackerMoodOkay}</option>
-        <option value="Low">{t.trackerMoodLow}</option>
-        <option value="Stressed">{t.trackerMoodStressed}</option>
-      </select>
-
-      <span className="tracker-label">{t.trackerSymptomsLabel}</span>
-      <div className="symptom-options">
-        {[
-          { id: "Cramps", label: t.trackerSymptomCramps },
-          { id: "Headache", label: t.trackerSymptomHeadache },
-          { id: "Tiredness", label: t.trackerSymptomTiredness },
-          { id: "Bloating", label: t.trackerSymptomBloating },
-        ].map((symptom) => (
-          <label className="symptom-option" key={symptom.id}>
-            <input
-              type="checkbox"
-              checked={wellnessSymptoms.includes(symptom.id)}
-              onChange={() =>
-                setWellnessSymptoms((items) =>
-                  items.includes(symptom.id)
-                    ? items.filter((item) => item !== symptom.id)
-                    : [...items, symptom.id]
-                )
-              }
-            />
-            {symptom.label}
-          </label>
-        ))}
-      </div>
-
-      <label className="tracker-label" htmlFor="wellness-notes">
-        {t.trackerNotesLabel}
-      </label>
-      <textarea
-        id="wellness-notes"
-        className="tracker-input tracker-textarea"
-        rows={3}
-        placeholder={t.trackerNotesPlaceholder}
-        value={wellnessNotes}
-        onChange={(event) => setWellnessNotes(event.target.value)}
-      />
-
-      <p className="tracker-privacy">
-        {t.trackerPrivacy}
-      </p>
-    </article>
-  </div>
-
-  <p className="content-note">
-    {t.trackerDisclaimer}
-  </p>
-</section>
-</>
-  )}
-
-{location.pathname === '/learn' && (
+  {location.pathname === '/symptoms' && <Symptoms t={t} />}
+  {location.pathname === '/reminders' && <Reminders t={t} />}
+  {location.pathname === '/reports' && <Reports t={t} />}
+  {location.pathname === '/learn' && (
   <>
 <section className="section learn-section" id="learn">
   <div className="section-heading">
@@ -1416,6 +1404,7 @@ const renderChatText = (message) =>
             </button>
           </section>
         )}
+      )
       </main>
 
       <footer className="footer" id="care">

@@ -3,6 +3,7 @@
 Member 3 wires the chat + healthcare routers. Member 2: health, symptoms, reminders,
 reports, and auth routers are included below. Run:  uvicorn app.main:app --reload --port 8000
 """
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -10,7 +11,14 @@ from app import database
 from app.api import auth, chat, healthcare, health, reminders, reports, symptoms
 from app.config import settings
 
-app = FastAPI(title="Sakhi API", version="0.1.0")
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    database.init_db()
+    yield
+
+
+app = FastAPI(title="Sakhi API", version="0.1.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -29,11 +37,6 @@ app.include_router(symptoms.router, prefix="/api")
 app.include_router(reminders.router, prefix="/api")
 app.include_router(reports.router, prefix="/api")
 # --------------------------------------------------------------------------
-
-# Create tables on startup (dev/demo; use Alembic migrations in production).
-@app.on_event("startup")
-def _startup():
-    database.init_db()
 
 
 @app.get("/api/ping")

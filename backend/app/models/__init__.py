@@ -1,5 +1,5 @@
 """SQLAlchemy models for the Sakhi backend."""
-from datetime import datetime
+from datetime import datetime, timezone
 
 from sqlalchemy import (
     Boolean,
@@ -15,6 +15,10 @@ from sqlalchemy.orm import relationship
 from app.database import Base
 
 
+def _now():
+    return datetime.now(timezone.utc)
+
+
 class User(Base):
     __tablename__ = "users"
 
@@ -23,7 +27,7 @@ class User(Base):
     password_hash = Column(String(255), nullable=False)
     full_name = Column(String(255), nullable=True)
     is_active = Column(Boolean, default=True, nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime, default=_now, nullable=False)
 
     health_logs = relationship("HealthLog", back_populates="user", cascade="all, delete-orphan")
     symptom_logs = relationship("SymptomLog", back_populates="user", cascade="all, delete-orphan")
@@ -41,8 +45,8 @@ class HealthLog(Base):
     cycle_end_date = Column(String(10), nullable=True)    # ISO date string
     flow_level = Column(String(20), nullable=True)        # light | medium | heavy
     notes = Column(Text, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime, default=_now, nullable=False)
+    updated_at = Column(DateTime, default=_now, onupdate=_now, nullable=False)
 
     user = relationship("User", back_populates="health_logs")
 
@@ -57,7 +61,7 @@ class SymptomLog(Base):
     severity = Column(String(20), nullable=False)  # mild | moderate | severe
     notes = Column(Text, nullable=True)
     occurred_at = Column(DateTime, nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime, default=_now, nullable=False)
 
     user = relationship("User", back_populates="symptom_logs")
 
@@ -74,7 +78,7 @@ class Reminder(Base):
     time_of_day = Column(String(8), nullable=True)  # HH:MM
     active = Column(Boolean, default=True, nullable=False)
     last_taken = Column(DateTime, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime, default=_now, nullable=False)
 
     user = relationship("User", back_populates="reminders")
 
@@ -90,6 +94,6 @@ class MedicalReport(Base):
     file_path = Column(String(512), nullable=False)
     file_type = Column(String(100), nullable=False)
     file_size = Column(Integer, nullable=False)
-    uploaded_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    uploaded_at = Column(DateTime, default=_now, nullable=False)
 
     user = relationship("User", back_populates="reports")

@@ -1,7 +1,7 @@
 """Schemas for medication and preventive-care reminders."""
 from datetime import datetime
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 KINDS = ("medication", "preventive_care")
 FREQUENCIES = ("daily", "weekly", "monthly", "custom")
@@ -68,8 +68,7 @@ class ReminderOut(ReminderBase):
     last_taken: datetime | None = None
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class ReminderMarkTaken(BaseModel):

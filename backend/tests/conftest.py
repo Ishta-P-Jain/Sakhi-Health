@@ -3,6 +3,7 @@ import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import StaticPool
 
 import app.database as database_module
 from app.database import Base, get_db
@@ -13,7 +14,11 @@ from app import models  # noqa: F401
 
 TEST_DB_URL = "sqlite:///:memory:"
 
-test_engine = create_engine(TEST_DB_URL, connect_args={"check_same_thread": False})
+test_engine = create_engine(
+    TEST_DB_URL,
+    connect_args={"check_same_thread": False},
+    poolclass=StaticPool,
+)
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=test_engine)
 
 Base.metadata.create_all(bind=test_engine)
@@ -42,6 +47,15 @@ def db():
         yield db
     finally:
         db.close()
+
+
+@pytest.fixture(autouse=True)
+def _clean_db(db):
+    """Clear all table rows after each test for isolation."""
+    yield
+    for table in reversed(Base.metadata.sorted_tables):
+        db.execute(table.delete())
+    db.commit()
 
 
 def register_user(client, email="user@example.com", password="password123", full_name="Test User"):

@@ -17,12 +17,13 @@ def _upload_file(client, token, filename, content, content_type):
 
 
 def test_upload_valid_pdf(auth_client):
-    r = _upload_file(auth_client, _token(auth_client), "report.pdf", b"%PDF-1.4 fake", "application/pdf")
+    content = b"%PDF-1.4 fake"
+    r = _upload_file(auth_client, _token(auth_client), "report.pdf", content, "application/pdf")
     assert r.status_code == 201, r.text
     body = r.json()
     assert body["original_filename"] == "report.pdf"
     assert body["file_type"] == "application/pdf"
-    assert body["file_size"] == 14
+    assert body["file_size"] == len(content)
     assert body["id"]
     # stored filename should be safe (uuid + .pdf), not the original name
     assert body["filename"] != "report.pdf"
@@ -36,6 +37,7 @@ def test_upload_valid_image(auth_client):
 
 
 def test_upload_invalid_file_type(client):
+    register_user(client)
     token = _token(client)
     r = _upload_file(client, token, "notes.txt", b"hello", "text/plain")
     assert r.status_code == 400
@@ -46,6 +48,7 @@ def test_upload_invalid_file_type(client):
 
 
 def test_upload_empty_file(client):
+    register_user(client)
     token = _token(client)
     r = _upload_file(client, token, "empty.pdf", b"", "application/pdf")
     assert r.status_code == 400
@@ -58,6 +61,7 @@ def test_upload_requires_auth(client):
 
 
 def test_upload_no_filename(client):
+    register_user(client)
     token = _token(client)
     r = client.post(
         "/api/reports/upload",

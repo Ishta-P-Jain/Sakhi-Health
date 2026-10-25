@@ -102,6 +102,16 @@ export default function Reminders({ t }) {
     }
   }
 
+  const handleMarkTaken = async (reminder) => {
+    setErrorCode(null)
+    try {
+      await updateReminder(reminder.id, { last_taken: new Date().toISOString() })
+      await load()
+    } catch {
+      setErrorCode('update_failed')
+    }
+  }
+
   const handleEdit = (r) => {
     setEditingId(r.id)
     setTitle(r.title)
@@ -296,8 +306,26 @@ export default function Reminders({ t }) {
                     <span className={`badge badge-${r.kind}`}>{kindLabel}</span>
                     <span className="badge badge-frequency">{freqLabel}</span>
                     {r.time_of_day && <span className="reminder-time">{r.time_of_day}</span>}
+                    {r.last_taken && (
+                      <span className="reminder-time">
+                        {t?.remindersLastTaken || 'Last taken'}:{' '}
+                        <time dateTime={r.last_taken}>
+                          {r.last_taken.replace('T', ' ').slice(0, 16)}
+                        </time>
+                      </span>
+                    )}
                   </div>
                   <div className="reminder-actions">
+                    {r.active && (
+                      <button
+                        type="button"
+                        className="button-link button-activate"
+                        onClick={() => handleMarkTaken(r)}
+                        aria-label={`${t?.remindersMarkTaken || 'Mark taken'}: ${r.title}`}
+                      >
+                        {t?.remindersMarkTaken || 'Mark taken'}
+                      </button>
+                    )}
                     <button
                       type="button"
                       className={`button-link ${r.active ? 'button-deactivate' : 'button-activate'}`}

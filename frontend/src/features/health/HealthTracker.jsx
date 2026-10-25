@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   createHealthLog,
   deleteHealthLog,
   fetchHealthLogs,
+  updateHealthLog,
   createSymptom,
   fetchSymptoms,
 } from '../../services/api'
@@ -30,8 +31,12 @@ export default function HealthTracker({ t }) {
   const [wellnessDate, setWellnessDate] = useState(
     new Date().toLocaleDateString('en-CA')
   )
+  const wellnessDateRef = useRef(wellnessDate)
+  const [cycleEndDate, setCycleEndDate] = useState('')
+  const [flowLevel, setFlowLevel] = useState('')
   const [healthLogs, setHealthLogs] = useState([])
   const [symptomLogs, setSymptomLogs] = useState([])
+  const [editingHealthLogId, setEditingHealthLogId] = useState(null)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [saving, setSaving] = useState(false)
@@ -46,8 +51,13 @@ export default function HealthTracker({ t }) {
       ])
       setHealthLogs(logs)
       setSymptomLogs(symptoms)
+      const selectedCycleLog = logs.find(
+        (log) => log.cycle_start_date === wellnessDateRef.current && !log.notes?.startsWith('Mood:')
+      )
+      setCycleEndDate(selectedCycleLog?.cycle_end_date || '')
+      setFlowLevel(selectedCycleLog?.flow_level || '')
       const dates = logs
-        .filter((l) => l.cycle_start_date)
+        .filter((l) => l.cycle_start_date && !l.notes?.startsWith('Mood:'))
         .map((l) => l.cycle_start_date)
       setPeriodDays(dates)
     } catch (err) {
@@ -61,29 +71,55 @@ export default function HealthTracker({ t }) {
     load()
   }, [load])
 
-  const togglePeriodDay = async (date) => {
-    if (periodDays.includes(date)) {
-      const log = healthLogs.find((l) => l.cycle_start_date === date)
-      if (log) {
-        try {
-          await deleteHealthLog(log.id)
-          setPeriodDays(periodDays.filter((d) => d !== date))
-          setHealthLogs(healthLogs.filter((l) => l.id !== log.id))
-        } catch (err) {
-          setError('Unable to remove period day.')
-        }
+  const cycleLogForDate = (date) =>
+    healthLogs.find((log) => log.cycle_start_date === date && !log.notes?.startsWith('Mood:'))
+
+  const handlePeriodDateChange = (date) => {
+    wellnessDateRef.current = date
+    setWellnessDate(date)
+    const log = cycleLogForDate(date)
+    setCycleEndDate(log?.cycle_end_date || '')
+    setFlowLevel(log?.flow_level || '')
+  }
+
+  const savePeriodDay = async (event) => {
+    event.preventDefault()
+    if (!wellnessDate) return
+    setError('')
+    setSaving(true)
+    const existingLog = cycleLogForDate(wellnessDate)
+    const payload = {
+      cycle_start_date: wellnessDate,
+      cycle_end_date: cycleEndDate || null,
+      flow_level: flowLevel || null,
+    }
+    try {
+      if (existingLog) {
+        await updateHealthLog(existingLog.id, payload)
+      } else {
+        await createHealthLog(payload)
       }
-    } else {
-      setSaving(true)
-      try {
-        await createHealthLog({ cycle_start_date: date })
-        setPeriodDays([...periodDays, date].sort())
-        load()
-      } catch (err) {
-        setError('Unable to mark period day.')
-      } finally {
-        setSaving(false)
+      await load()
+    } catch {
+      setError(existingLog ? 'Unable to update period details.' : 'Unable to mark period day.')
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  const removePeriodDay = async (date) => {
+    const log = cycleLogForDate(date)
+    if (!log) return
+    setError('')
+    try {
+      await deleteHealthLog(log.id)
+      await load()
+      if (wellnessDate === date) {
+        setCycleEndDate('')
+        setFlowLevel('')
       }
+    } catch {
+      setError('Unable to remove period day.')
     }
   }
 
@@ -92,10 +128,15 @@ export default function HealthTracker({ t }) {
     setError('')
     setSaving(true)
     try {
-      await createHealthLog({
+      const healthLog = {
         cycle_start_date: wellnessDate,
         notes: `Mood: ${wellnessMood}. ${wellnessNotes}`,
-      })
+      }
+      if (editingHealthLogId) {
+        await updateHealthLog(editingHealthLogId, healthLog)
+      } else {
+        await createHealthLog(healthLog)
+      }
       for (const symptom of wellnessSymptoms) {
         await createSymptom({
           symptom,
@@ -107,12 +148,23 @@ export default function HealthTracker({ t }) {
       setWellnessMood('Okay')
       setWellnessSymptoms([])
       setWellnessNotes('')
-      load()
+      setEditingHealthLogId(null)
+      await load()
     } catch (err) {
       setError('Unable to save wellness entry.')
     } finally {
       setSaving(false)
     }
+  }
+
+  const editWellnessLog = (log) => {
+    const match = log.notes?.match(/^Mood: (Great|Good|Okay|Low|Stressed)\.\s?([\s\S]*)$/)
+    setEditingHealthLogId(log.id)
+    wellnessDateRef.current = log.cycle_start_date || wellnessDate
+    setWellnessDate(wellnessDateRef.current)
+    setWellnessMood(match?.[1] || 'Okay')
+    setWellnessNotes(match?.[2] || '')
+    setWellnessSymptoms([])
   }
 
   const deleteLog = async (id) => {
@@ -155,26 +207,55 @@ export default function HealthTracker({ t }) {
           <h3>{t.trackerPeriodTitle}</h3>
           <p>{t.trackerPeriodDescription}</p>
 
-          <label className="tracker-label" htmlFor="period-date">
-            {t.trackerChooseDate}
-          </label>
-          <input
-            id="period-date"
-            className="tracker-input"
-            type="date"
-            value={wellnessDate}
-            onChange={(event) => setWellnessDate(event.target.value)}
-          />
+          <form onSubmit={savePeriodDay}>
+            <label className="tracker-label" htmlFor="period-date">
+              {t.trackerChooseDate}
+            </label>
+            <input
+              id="period-date"
+              className="tracker-input"
+              type="date"
+              value={wellnessDate}
+              onChange={(event) => handlePeriodDateChange(event.target.value)}
+              required
+            />
 
-          <button
-            className="tracker-button"
-            onClick={() => togglePeriodDay(wellnessDate)}
-            disabled={!wellnessDate || saving}
-          >
-            {periodDays.includes(wellnessDate)
-              ? t.trackerRemovePeriodDay
-              : t.trackerMarkPeriodDay}
-          </button>
+            <label className="tracker-label" htmlFor="cycle-end-date">
+              {t.trackerCycleEndDate}
+            </label>
+            <input
+              id="cycle-end-date"
+              className="tracker-input"
+              type="date"
+              value={cycleEndDate}
+              min={wellnessDate}
+              onChange={(event) => setCycleEndDate(event.target.value)}
+            />
+
+            <label className="tracker-label" htmlFor="flow-level">
+              {t.trackerFlowLevel}
+            </label>
+            <select
+              id="flow-level"
+              className="tracker-input"
+              value={flowLevel}
+              onChange={(event) => setFlowLevel(event.target.value)}
+            >
+              <option value="">{t.trackerFlowNotSet}</option>
+              <option value="light">{t.trackerFlowLight}</option>
+              <option value="medium">{t.trackerFlowMedium}</option>
+              <option value="heavy">{t.trackerFlowHeavy}</option>
+            </select>
+
+            {error && <p className="error" role="alert">{error}</p>}
+            <button className="tracker-button" type="submit" disabled={!wellnessDate || saving}>
+              {saving
+                ? (t.actionSaving || 'Saving…')
+                : cycleLogForDate(wellnessDate)
+                  ? t.trackerUpdatePeriodDay
+                  : t.trackerMarkPeriodDay}
+            </button>
+          </form>
 
           <div className="tracker-summary">
             <strong>{periodDays.length}</strong>
@@ -193,7 +274,7 @@ export default function HealthTracker({ t }) {
                   <button
                     type="button"
                     className="delete-day"
-                    onClick={() => togglePeriodDay(day)}
+                    onClick={() => removePeriodDay(day)}
                     aria-label={`Remove ${day}`}
                   >
                     ×
@@ -261,8 +342,26 @@ export default function HealthTracker({ t }) {
             {error && <p className="error">{error}</p>}
 
             <button type="submit" className="tracker-button" disabled={saving}>
-              {saving ? 'Saving…' : 'Save entry'}
+              {saving
+                ? (t.actionSaving || 'Saving…')
+                : editingHealthLogId
+                  ? (t.symptomsButtonUpdate || 'Update entry')
+                  : (t.trackerSaveEntry || 'Save entry')}
             </button>
+            {editingHealthLogId && (
+              <button
+                type="button"
+                className="button-secondary"
+                onClick={() => {
+                  setEditingHealthLogId(null)
+                  setWellnessMood('Okay')
+                  setWellnessSymptoms([])
+                  setWellnessNotes('')
+                }}
+              >
+                {t.actionCancel || 'Cancel'}
+              </button>
+            )}
           </form>
 
           <p className="tracker-privacy">{t.trackerPrivacy}</p>
@@ -277,14 +376,26 @@ export default function HealthTracker({ t }) {
               <li key={log.id} className="tracker-history-item">
                 <span className="history-date">{log.cycle_start_date || log.created_at}</span>
                 <span className="history-notes">{log.notes || '—'}</span>
-                <button
-                  type="button"
-                  className="delete-day"
-                  onClick={() => deleteLog(log.id)}
-                  aria-label="Delete entry"
-                >
-                  ×
-                </button>
+                <div className="tracker-history-actions">
+                  {log.notes?.startsWith('Mood:') && (
+                    <button
+                      type="button"
+                      className="button-link"
+                      onClick={() => editWellnessLog(log)}
+                      aria-label={`${t.actionEdit || 'Edit'} ${log.cycle_start_date || log.created_at}`}
+                    >
+                      {t.actionEdit || 'Edit'}
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    className="delete-day"
+                    onClick={() => deleteLog(log.id)}
+                    aria-label={`${t.actionDelete || 'Delete'} ${log.cycle_start_date || log.created_at}`}
+                  >
+                    ×
+                  </button>
+                </div>
               </li>
             ))}
           </ul>

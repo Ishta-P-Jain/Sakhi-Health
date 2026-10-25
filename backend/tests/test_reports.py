@@ -112,6 +112,29 @@ def test_delete_report_removes_file_and_metadata(auth_client, db):
     assert not os.path.exists(stored_path)
 
 
+def test_delete_report_storage_failure_preserves_metadata(auth_client, db, monkeypatch, tmp_path):
+    from pathlib import Path
+    from app.models import MedicalReport
+
+    r = _upload_file(auth_client, _token(auth_client), "report.pdf", b"%PDF-1.4 fake", "application/pdf")
+    report_id = r.json()["id"]
+    stored_path = tmp_path / "report.pdf"
+    stored_path.write_bytes(b"%PDF-1.4 fake")
+    report = db.query(MedicalReport).filter(MedicalReport.id == report_id).first()
+    report.file_path = str(stored_path)
+    db.commit()
+
+    def fail_unlink(self, missing_ok=False):
+        raise OSError("disk error")
+
+    monkeypatch.setattr(Path, "unlink", fail_unlink)
+    r = auth_client.delete(f"/api/reports/{report_id}")
+
+    assert r.status_code == 500
+    assert r.json()["detail"] == "storage_error"
+    assert auth_client.get(f"/api/reports/{report_id}").status_code == 200
+
+
 def test_report_requires_auth(client):
     r = client.get("/api/reports")
     assert r.status_code == 401

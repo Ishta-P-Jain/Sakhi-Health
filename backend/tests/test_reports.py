@@ -68,7 +68,7 @@ def test_upload_no_filename(client):
         files={"file": ("", io.BytesIO(b"%PDF"), "application/pdf")},
         headers=auth_headers(token),
     )
-    assert r.status_code == 400
+    assert r.status_code == 422
 
 
 def test_list_and_get_report(auth_client):

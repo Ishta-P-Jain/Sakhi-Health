@@ -1,7 +1,7 @@
 """Schemas for health tracking (cycle logs + symptom logs)."""
 from datetime import datetime
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 FLOW_LEVELS = ("light", "medium", "heavy")
 SEVERITIES = ("mild", "moderate", "severe")

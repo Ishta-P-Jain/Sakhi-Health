@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { register, setAuthToken } from '../services/api'
+import { registerAndLogin, setAuthToken } from '../services/api'
 
 export default function Register({ onRegister, onSwitchToLogin }) {
   const [email, setEmail] = useState('')
@@ -13,13 +13,15 @@ export default function Register({ onRegister, onSwitchToLogin }) {
     setError('')
     setLoading(true)
     try {
-      const data = await register({ email, password, full_name: fullName || undefined })
+      const data = await registerAndLogin({ email, password, full_name: fullName || undefined })
       setAuthToken(data.access_token)
       localStorage.setItem('sakhi_token', data.access_token)
       localStorage.setItem('sakhi_user_email', email)
       onRegister({ email, token: data.access_token })
     } catch (err) {
-      if (err.status === 409) {
+      if (err.accountCreated) {
+        setError('Account created, but sign-in failed. Please sign in with your new account.')
+      } else if (err.status === 409) {
         setError('An account with this email already exists.')
       } else {
         setError('Unable to create account. Please try again.')

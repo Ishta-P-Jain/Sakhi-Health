@@ -83,17 +83,20 @@ export default function Reports({ t }) {
     }
   }
 
-  const handleDownload = (id) => {
-    const link = document.createElement('a')
-    link.href = `${window.location.origin}/api/reports/${id}/file`
-    const token = localStorage.getItem('sakhi_token')
-    if (token) {
-      link.headers = new Headers({ Authorization: `Bearer ${token}` })
+  const handleDownload = async (id, filename) => {
+    try {
+      const blob = await downloadReport(id)
+      const objectUrl = URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = objectUrl
+      link.download = filename
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      window.setTimeout(() => URL.revokeObjectURL(objectUrl), 0)
+    } catch {
+      setError('Unable to download report.')
     }
-    link.download = ''
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
   }
 
   if (loading) {
@@ -166,7 +169,7 @@ export default function Reports({ t }) {
                   <button
                     type="button"
                     className="button-link"
-                    onClick={() => handleDownload(r.id)}
+                    onClick={() => handleDownload(r.id, r.original_filename)}
                   >
                     Download
                   </button>

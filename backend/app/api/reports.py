@@ -152,11 +152,11 @@ def delete_report(
     user=Depends(auth.current_user),
 ):
     report = _get_report_or_404(db, report_id, user.id)
-    # Remove the stored file if present (ignore missing file).
+    # Remove the stored file if present before deleting its metadata.
     try:
         Path(report.file_path).unlink(missing_ok=True)
-    except OSError:
-        pass
+    except OSError as exc:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="storage_error") from exc
     db.delete(report)
     db.commit()
     return None

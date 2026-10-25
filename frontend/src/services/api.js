@@ -1,6 +1,6 @@
 // All backend calls go through here. In dev, Vite proxies /api to FastAPI (see vite.config.js).
 // In production set VITE_API_URL to the deployed backend origin.
-const BASE = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
+const BASE = (import.meta.env?.VITE_API_URL || '').replace(/\/$/, '')
 
 let authToken = null
 let onUnauthenticated = () => {}
@@ -24,17 +24,18 @@ export class ApiError extends Error {
   }
 }
 
-export async function request(path, { method = 'GET', body, timeoutMs = 30000 } = {}) {
+export async function request(path, { method = 'GET', body, timeoutMs = 30000, responseType = 'json' } = {}) {
   const controller = new AbortController()
   const timer = setTimeout(() => controller.abort(), timeoutMs)
   const headers = {}
-  if (body) headers['Content-Type'] = 'application/json'
+  const isFormData = typeof FormData !== 'undefined' && body instanceof FormData
+  if (body && !isFormData) headers['Content-Type'] = 'application/json'
   if (authToken) headers['Authorization'] = `Bearer ${authToken}`
   try {
     const res = await fetch(`${BASE}${path}`, {
       method,
       headers,
-      body: body ? JSON.stringify(body) : undefined,
+      body: body ? (isFormData ? body : JSON.stringify(body)) : undefined,
       signal: controller.signal,
     })
     if (res.status === 401) {
@@ -51,6 +52,8 @@ export async function request(path, { method = 'GET', body, timeoutMs = 30000 } 
       }
       throw new ApiError(res.status, typeof detail === 'string' ? detail : '')
     }
+    if (res.status === 204) return null
+    if (responseType === 'blob') return await res.blob()
     return await res.json()
   } finally {
     clearTimeout(timer)
@@ -67,6 +70,16 @@ export const register = ({ email, password, full_name }) =>
 
 export const login = ({ email, password }) =>
   request('/api/auth/login', { method: 'POST', body: { email, password } })
+
+export const registerAndLogin = async (credentials) => {
+  await register(credentials)
+  try {
+    return await login(credentials)
+  } catch (error) {
+    error.accountCreated = true
+    throw error
+  }
+}
 
 export const fetchMe = () => request('/api/auth/me')
 
@@ -148,7 +161,7 @@ export const uploadReport = (file) => {
 }
 
 export const downloadReport = (id) =>
-  request(`/api/reports/${id}/file`)
+  request(`/api/reports/${id}/file`, { responseType: 'blob' })
 
 export const deleteReport = (id) =>
   request(`/api/reports/${id}`, { method: 'DELETE' })

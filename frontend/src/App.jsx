@@ -1722,6 +1722,7 @@ function App() {
           {[
             { label: t.home, route: 'home' },
             { label: t.tracker, route: 'tracker' },
+            { label: t.reportsKicker || 'Reports', route: 'reports' },
             { label: t.learn, route: 'learn' },
             { label: t.assistant, route: 'assistant' },
             { label: finderNavLabel[language] || finderNavLabel.English, route: 'finder' },

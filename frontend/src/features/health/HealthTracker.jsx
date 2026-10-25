@@ -372,32 +372,56 @@ export default function HealthTracker({ t }) {
         <div className="tracker-history">
           <h3>Your entries</h3>
           <ul className="tracker-history-list">
-            {healthLogs.map((log) => (
-              <li key={log.id} className="tracker-history-item">
-                <span className="history-date">{log.cycle_start_date || log.created_at}</span>
-                <span className="history-notes">{log.notes || '—'}</span>
-                <div className="tracker-history-actions">
-                  {log.notes?.startsWith('Mood:') && (
+            {healthLogs.map((log) => {
+              const isWellnessLog = log.notes?.startsWith('Mood:')
+              const flowLabels = {
+                light: t.trackerFlowLight,
+                medium: t.trackerFlowMedium,
+                heavy: t.trackerFlowHeavy,
+              }
+
+              return (
+                <li key={log.id} className="tracker-history-item">
+                  <span className="history-date">{log.cycle_start_date || log.created_at}</span>
+                  {log.notes && <span className="history-notes">{log.notes}</span>}
+                  {!isWellnessLog && (log.cycle_end_date || log.flow_level) && (
+                    <div className="history-details">
+                      {log.cycle_end_date && (
+                        <span>
+                          <strong>{t.trackerCycleEndDate}:</strong> {log.cycle_end_date}
+                        </span>
+                      )}
+                      {log.flow_level && (
+                        <span>
+                          <strong>{t.trackerFlowLevel}:</strong>{' '}
+                          {flowLabels[log.flow_level] || log.flow_level}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                  <div className="tracker-history-actions">
+                    {isWellnessLog && (
+                      <button
+                        type="button"
+                        className="button-link"
+                        onClick={() => editWellnessLog(log)}
+                        aria-label={`${t.actionEdit || 'Edit'} ${log.cycle_start_date || log.created_at}`}
+                      >
+                        {t.actionEdit || 'Edit'}
+                      </button>
+                    )}
                     <button
                       type="button"
-                      className="button-link"
-                      onClick={() => editWellnessLog(log)}
-                      aria-label={`${t.actionEdit || 'Edit'} ${log.cycle_start_date || log.created_at}`}
+                      className="delete-day"
+                      onClick={() => deleteLog(log.id)}
+                      aria-label={`${t.actionDelete || 'Delete'} ${log.cycle_start_date || log.created_at}`}
                     >
-                      {t.actionEdit || 'Edit'}
+                      ×
                     </button>
-                  )}
-                  <button
-                    type="button"
-                    className="delete-day"
-                    onClick={() => deleteLog(log.id)}
-                    aria-label={`${t.actionDelete || 'Delete'} ${log.cycle_start_date || log.created_at}`}
-                  >
-                    ×
-                  </button>
-                </div>
-              </li>
-            ))}
+                  </div>
+                </li>
+              )
+            })}
           </ul>
         </div>
       )}

@@ -26,6 +26,7 @@ dist-ssr
 # Secrets & env
 .env
 .env.*
+!backend/.env.example
 
 
 # Python

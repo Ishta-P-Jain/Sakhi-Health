@@ -241,13 +241,9 @@ Start the backend using the application entry point and command documented in th
 
 ### 3. Configure the AI Assistant
 
-Install Ollama and download the model configured by the backend. The documented default model is `llama3.2:1b`.
+Install and run Ollama, then make sure the model configured for the backend is available. The default is `gpt-oss:120b-cloud`; change `OLLAMA_MODEL` in `backend/.env` if you use a different model.
 
-```bash
-ollama pull llama3.2:1b
-```
-
-Ensure Ollama is running and reachable from the backend. Verify the actual environment variable names and defaults in the current backend configuration before changing them.
+Ensure Ollama is reachable from the backend. Set `OLLAMA_BASE_URL` and `OLLAMA_MODEL` in `backend/.env` if needed, then restart the backend after changing them.
 
 ### 4. Set Up the Frontend
 

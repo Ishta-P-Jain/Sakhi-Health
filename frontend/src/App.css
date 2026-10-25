@@ -849,9 +849,125 @@ select.tracker-input {
 }
 
 .tracker-date-list {
-  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tracker-date-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 42px;
+  padding: 6px 8px 6px 14px;
+  border: 1px solid #f0e2e8;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.78);
   color: #705e69;
-  line-height: 1.8;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.tracker-date-list li:hover {
+  border-color: #e2c8d4;
+  background: #ffffff;
+}
+
+.delete-day {
+  display: inline-grid;
+  flex: 0 0 30px;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #987183;
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.delete-day:hover {
+  border-color: #f0d6dc;
+  background: #fff0f2;
+  color: #a83c52;
+}
+
+.delete-day:focus-visible {
+  outline: 3px solid rgba(184, 124, 158, 0.55);
+  outline-offset: 2px;
+}
+
+.tracker-history {
+  margin-top: 18px;
+}
+
+.tracker-history > h3 {
+  margin: 0 0 10px;
+  color: #4c3545;
+  font-size: 17px;
+}
+
+.tracker-history-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tracker-history-item {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.35fr) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 8px 10px 8px 14px;
+  border: 1px solid #f0e2e8;
+  border-radius: 10px;
+  background: #fffaf8;
+  color: #705e69;
+  font-size: 13px;
+}
+
+.history-date {
+  color: #63475a;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.history-notes {
+  min-width: 0;
+  color: #806f79;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 520px) {
+  .tracker-history-item {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 4px 10px;
+  }
+
+  .history-date {
+    grid-column: 1;
+  }
+
+  .history-notes {
+    grid-column: 1;
+  }
+
+  .tracker-history-item .delete-day {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
 }
 
 .symptom-options {

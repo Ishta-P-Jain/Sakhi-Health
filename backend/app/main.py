@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import chat, healthcare
 from app.config import settings
-
+from app.services.llm import OLLAMA_BASE_URL, OLLAMA_MODEL
 app = FastAPI(title="Sakhi API", version="0.1.0")
 
 app.add_middleware(
@@ -30,4 +30,7 @@ app.include_router(healthcare.router, prefix="/api")
 
 @app.get("/api/ping")
 def ping():
-    return {"status": "ok", "llm_configured": bool(settings.anthropic_api_key)}
+    return {
+    "status": "ok",
+    "llm_configured": bool(OLLAMA_BASE_URL and OLLAMA_MODEL),
+}

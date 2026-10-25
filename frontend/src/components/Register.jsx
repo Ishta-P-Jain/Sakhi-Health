@@ -19,27 +19,23 @@ export default function Register({ t, onRegister, onSwitchToLogin }) {
       localStorage.setItem('sakhi_user_email', email)
       onRegister({ email, token: data.access_token })
     } catch (err) {
-<<<<<<< HEAD
       if (err.accountCreated) {
-        setError('Account created, but sign-in failed. Please sign in with your new account.')
-      } else if (err.status === 409) {
-        setError('An account with this email already exists.')
+        setErrorCode('account_created')
       } else {
-        setError('Unable to create account. Please try again.')
+        setErrorCode(err.status === 409 ? 'email_exists' : 'generic')
       }
-=======
-      setErrorCode(err.status === 409 ? 'email_exists' : 'generic')
->>>>>>> origin/main
     } finally {
       setLoading(false)
     }
   }
 
-  const errorMessage = errorCode === 'email_exists'
-    ? (t?.authErrorEmailExists || 'An account with this email already exists.')
-    : errorCode === 'generic'
-      ? (t?.authErrorRegisterGeneric || 'Unable to create account. Please try again.')
-      : null
+  const errorMessage = errorCode === 'account_created'
+    ? (t?.authErrorAccountCreated || 'Account created, but sign-in failed. Please sign in with your new account.')
+    : errorCode === 'email_exists'
+      ? (t?.authErrorEmailExists || 'An account with this email already exists.')
+      : errorCode === 'generic'
+        ? (t?.authErrorRegisterGeneric || 'Unable to create account. Please try again.')
+        : null
 
   return (
     <div className="auth-page">

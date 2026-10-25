@@ -24,6 +24,9 @@ const translations = {
     heroSubtitle: "Your health matters, every single day. Find trusted health education, understand your wellbeing and take your next step with confidence.",
     heroPrimaryButton: "Explore your health",
     heroSecondaryButton: "Discover & learn",
+    heroTrustTagline: "A supportive space, made with women in mind.",
+    heroTagline: "A supportive space, made with women in mind.",
+    heroTrustNote: "A supportive space, made with women in mind.",
     trackerKicker: "A LITTLE CHECK-IN WITH YOURSELF",
     trackerHeading: "Your health, your way",
     trackerIntro: "Keep a private record of how you're feeling, one day at a time.",
@@ -134,6 +137,119 @@ const translations = {
     chatReplyHormonal: "🌼 Hormonal health: Hormones help regulate many processes in the body, including menstrual cycles, puberty, and growth. Conditions like PCOS or PMS involve complex hormonal patterns. Symptoms alone cannot confirm a condition; a healthcare professional can help assess persistent or worrying symptoms.",
     chatReplyThanks: "You're welcome! 🌸 Keep exploring the Sakhi Learn section for general health education.",
     chatReplyFallback: "I'm a demo assistant, so I may not understand every question yet. Try asking about periods, nutrition, bone health, or hormones. For personal medical concerns, please speak with a qualified healthcare professional.",
+    signIn: "Sign in",
+    createAccount: "Create account",
+    signOut: "Sign out",
+    authSignInTitle: "Sign in to Sakhi",
+    authSignInSubtitle: "Welcome back. Enter your email and password to access your health records.",
+    authRegisterTitle: "Create your Sakhi account",
+    authRegisterSubtitle: "Join Sakhi to keep your health records private and secure.",
+    authFullName: "Full name",
+    authOptional: "(optional)",
+    authFullNamePlaceholder: "Your name",
+    authEmail: "Email",
+    authEmailPlaceholder: "you@example.com",
+    authPassword: "Password",
+    authPasswordPlaceholder: "••••••••",
+    authPasswordHint: "At least 6 characters",
+    authSignInBtn: "Sign in ↗",
+    authSigningIn: "Signing in…",
+    authRegisterBtn: "Create account ↗",
+    authRegistering: "Creating account…",
+    authNoAccount: "Don't have an account?",
+    authHaveAccount: "Already have an account?",
+    authErrorInvalidCredentials: "Invalid email or password.",
+    authErrorGeneric: "Unable to sign in. Please try again.",
+    authErrorEmailExists: "An account with this email already exists.",
+    authErrorRegisterGeneric: "Unable to create account. Please try again.",
+    authRequiredTitle: "Sign in required",
+    authRequiredText: "Please sign in or create an account to access your private health records.",
+    authLoadingSession: "Loading session…",
+    actionCancel: "Cancel",
+    actionEdit: "Edit",
+    actionDelete: "Delete",
+    actionUpdate: "Update entry",
+    actionSave: "Save entry",
+    actionRemove: "Remove",
+    actionDownload: "Download",
+    actionActivate: "Activate",
+    actionDeactivate: "Deactivate",
+    actionSaving: "Saving…",
+    actionUploading: "Uploading…",
+    sessionExpired: "Session expired. Please sign in again.",
+    symptomsKicker: "Symptoms",
+    symptomsHeading: "Symptom log",
+    symptomsIntro: "Record how you feel. This is for your personal awareness — not a diagnosis.",
+    symptomsLoading: "Loading your symptoms…",
+    symptomsLabelSymptom: "Symptom",
+    symptomsPlaceholderSymptom: "e.g. cramps, headache, fatigue",
+    symptomsLabelSeverity: "Severity",
+    symptomsSeverityMild: "Mild",
+    symptomsSeverityModerate: "Moderate",
+    symptomsSeveritySevere: "Severe",
+    symptomsLabelDateTime: "Date & time",
+    symptomsLabelNotes: "Notes (optional)",
+    symptomsPlaceholderNotes: "Anything you'd like to remember…",
+    symptomsButtonLog: "Log symptom",
+    symptomsButtonUpdate: "Update entry",
+    symptomsHistoryHeading: "Your symptom entries",
+    symptomsEmptyTitle: "No symptoms logged yet",
+    symptomsEmptyText: "Use the form above to record any symptoms or changes you notice.",
+    symptomsDisclaimer: "Recording symptoms helps you notice patterns. It is not a medical diagnosis. For health concerns, consult a qualified healthcare professional.",
+    symptomsDeleteConfirm: "Delete this symptom entry?",
+    symptomsErrorLoad: "Unable to load symptoms.",
+    symptomsErrorSave: "Unable to save symptom entry.",
+    symptomsErrorDelete: "Unable to delete symptom entry.",
+    remindersKicker: "Reminders",
+    remindersHeading: "Medication & care reminders",
+    remindersIntro: "Set reminders for medications, supplements, or preventive care.",
+    remindersLoading: "Loading your reminders…",
+    remindersLabelTitle: "Title",
+    remindersPlaceholderTitle: "e.g. Iron tablet, prenatal vitamin",
+    remindersLabelType: "Type",
+    remindersTypeMedication: "Medication",
+    remindersTypePreventive: "Preventive care",
+    remindersLabelFrequency: "Frequency",
+    remindersFreqDaily: "Daily",
+    remindersFreqWeekly: "Weekly",
+    remindersFreqMonthly: "Monthly",
+    remindersFreqCustom: "Custom",
+    remindersLabelTime: "Time of day (optional)",
+    remindersLabelActive: "Active",
+    remindersButtonAdd: "Add reminder",
+    remindersButtonUpdate: "Update reminder",
+    remindersHistoryHeading: "Active & upcoming",
+    remindersEmptyTitle: "No reminders scheduled",
+    remindersEmptyText: "Set a medication or care reminder above to stay on track with your health routine.",
+    remindersDisclaimer: "Sakhi stores your reminders locally on the server. It does not send push notifications or SMS — please check this page or set your own phone reminders for time-sensitive medications.",
+    remindersDeleteConfirm: "Delete this reminder?",
+    remindersErrorLoad: "Unable to load reminders.",
+    remindersErrorSave: "Unable to save reminder.",
+    remindersErrorDelete: "Unable to delete reminder.",
+    remindersErrorUpdate: "Unable to update reminder.",
+    reportsKicker: "Medical reports",
+    reportsHeading: "Your medical reports",
+    reportsIntro: "Upload, view, and download your medical documents securely.",
+    reportsLoading: "Loading your reports…",
+    reportsLabelChooseFile: "Choose file",
+    reportsHint: "Allowed: PDF, PNG, JPG. Max 5 MB. Files are stored privately and are only accessible to you.",
+    reportsButtonUpload: "Upload report",
+    reportsButtonUploading: "Uploading…",
+    reportsHistoryHeading: "Your files",
+    reportsEmptyTitle: "No reports uploaded yet",
+    reportsEmptyText: "Uploaded reports are stored privately and are only accessible to your account. Sakhi does not perform OCR or AI analysis on your files.",
+    reportsDeleteConfirm: "Delete this report?",
+    reportsErrorLoad: "Unable to load reports.",
+    reportsErrorUpload: "Unable to upload report.",
+    reportsErrorDelete: "Unable to delete report.",
+    reportsErrorFileType: "File type not allowed. Allowed: .pdf, .png, .jpg, .jpeg",
+    reportsErrorFileSize: "File too large. Maximum size is 5 MB.",
+    footerCare: "Care that puts you first",
+    footerKnowledge: "Knowledge for every stage",
+    footerLanguage: "Health information in your language",
+    footerTagline: "A companion for your health journey.",
+    footerCompanion: "A companion for your health journey.",
+    footerDisclaimer: "For education and support only. Not a substitute for professional medical care.",
   },
   हिन्दी: {
     home: "होम",
@@ -144,6 +260,9 @@ const translations = {
     heroSubtitle: "आपका स्वास्थ्य हर दिन महत्वपूर्ण है। विश्वसनीय स्वास्थ्य शिक्षा पाएँ, अपनी सेहत को समझें और आत्मविश्वास के साथ अगला कदम बढ़ाएँ।",
     heroPrimaryButton: "अपनी सेहत जानें",
     heroSecondaryButton: "जानें और सीखें",
+    heroTrustTagline: "एक सुरक्षित और सहयोगी मंच, विशेष रूप से महिलाओं के लिए।",
+    heroTagline: "एक सुरक्षित और सहयोगी मंच, विशेष रूप से महिलाओं के लिए।",
+    heroTrustNote: "एक सुरक्षित और सहयोगी मंच, विशेष रूप से महिलाओं के लिए।",
     trackerKicker: "अपने साथ एक छोटी सी जाँच",
     trackerHeading: "आपका स्वास्थ्य, आपका तरीका",
     trackerIntro: "हर दिन, यह निजी रिकॉर्ड रखें कि आप कैसा महसूस कर रही हैं।",
@@ -254,6 +373,119 @@ const translations = {
     chatReplyHormonal: "🌼 हार्मोनल स्वास्थ्य: हार्मोन मासिक धर्म, यौवन और शारीरिक विकास सहित शरीर की कई प्रक्रियाओं को नियंत्रित करते हैं। PCOS या PMS जैसी स्थितियाँ जटिल हार्मोनल पैटर्न से जुड़ी होती हैं। केवल लक्षणों से किसी स्थिति की पुष्टि नहीं हो सकती; लगातार लक्षणों के लिए स्वास्थ्य पेशेवर से परामर्श करें।",
     chatReplyThanks: "आपका स्वागत है! 🌸 सामान्य स्वास्थ्य शिक्षा के लिए सखी के सीखें अनुभाग को देखना जारी रखें।",
     chatReplyFallback: "मैं एक डेमो सहायक हूँ, इसलिए हो सकता है कि मैं हर सवाल न समझ सकूँ। कृपया पीरियड्स, पोषण, हड्डियों के स्वास्थ्य या हार्मोन के बारे में पूछें। व्यक्तिगत चिकित्सा चिंताओं के लिए योग्य स्वास्थ्य पेशेवर से बात करें।",
+    signIn: "साइन इन करें",
+    createAccount: "खाता बनाएँ",
+    signOut: "साइन आउट",
+    authSignInTitle: "सखी में साइन इन करें",
+    authSignInSubtitle: "वापसी पर स्वागत है। अपने स्वास्थ्य रिकॉर्ड तक पहुँचने के लिए अपना ईमेल और पासवर्ड दर्ज करें।",
+    authRegisterTitle: "अपना सखी खाता बनाएँ",
+    authRegisterSubtitle: "अपने स्वास्थ्य रिकॉर्ड को निजी और सुरक्षित रखने के लिए सखी से जुड़ें।",
+    authFullName: "पूरा नाम",
+    authOptional: "(वैकल्पिक)",
+    authFullNamePlaceholder: "आपका नाम",
+    authEmail: "ईमेल",
+    authEmailPlaceholder: "you@example.com",
+    authPassword: "पासवर्ड",
+    authPasswordPlaceholder: "••••••••",
+    authPasswordHint: "कम से कम 6 वर्ण",
+    authSignInBtn: "साइन इन करें ↗",
+    authSigningIn: "साइन इन हो रहा है…",
+    authRegisterBtn: "खाता बनाएँ ↗",
+    authRegistering: "खाता बनाया जा रहा है…",
+    authNoAccount: "खाता नहीं है?",
+    authHaveAccount: "पहले से खाता है?",
+    authErrorInvalidCredentials: "अमान्य ईमेल या पासवर्ड।",
+    authErrorGeneric: "साइन इन करने में असमर्थ। कृपया पुनः प्रयास करें।",
+    authErrorEmailExists: "इस ईमेल से एक खाता पहले से मौजूद है।",
+    authErrorRegisterGeneric: "खाता बनाने में असमर्थ। कृपया पुनः प्रयास करें।",
+    authRequiredTitle: "साइन इन आवश्यक है",
+    authRequiredText: "अपने निजी स्वास्थ्य रिकॉर्ड तक पहुँचने के लिए कृपया साइन इन करें या खाता बनाएँ।",
+    authLoadingSession: "सत्र लोड हो रहा है…",
+    actionCancel: "रद्द करें",
+    actionEdit: "संपादित करें",
+    actionDelete: "हटाएँ",
+    actionUpdate: "प्रविष्टि अपडेट करें",
+    actionSave: "सहेजें",
+    actionRemove: "हटाएँ",
+    actionDownload: "डाउनलोड करें",
+    actionActivate: "सक्रिय करें",
+    actionDeactivate: "निष्क्रिय करें",
+    actionSaving: "सहेजा जा रहा है…",
+    actionUploading: "अपलोड हो रहा है…",
+    sessionExpired: "सत्र समाप्त हो गया है। कृपया पुनः साइन इन करें।",
+    symptomsKicker: "लक्षण",
+    symptomsHeading: "लक्षण लॉग",
+    symptomsIntro: "आप कैसा महसूस कर रही हैं, इसे दर्ज करें। यह आपकी व्यक्तिगत जागरूकता के लिए है — कोई निदान नहीं।",
+    symptomsLoading: "आपके लक्षण लोड हो रहे हैं…",
+    symptomsLabelSymptom: "लक्षण",
+    symptomsPlaceholderSymptom: "जैसे: ऐंठन, सिरदर्द, थकान",
+    symptomsLabelSeverity: "तीव्रता",
+    symptomsSeverityMild: "हल्का",
+    symptomsSeverityModerate: "मध्यम",
+    symptomsSeveritySevere: "गंभीर",
+    symptomsLabelDateTime: "तारीख और समय",
+    symptomsLabelNotes: "नोट्स (वैकल्पिक)",
+    symptomsPlaceholderNotes: "कुछ भी जो आप याद रखना चाहें…",
+    symptomsButtonLog: "लक्षण दर्ज करें",
+    symptomsButtonUpdate: "प्रविष्टि अपडेट करें",
+    symptomsHistoryHeading: "आपकी लक्षण प्रविष्टियाँ",
+    symptomsEmptyTitle: "अभी तक कोई लक्षण दर्ज नहीं हुआ",
+    symptomsEmptyText: "जो भी लक्षण या बदलाव आप महसूस करें, उन्हें दर्ज करने के लिए ऊपर दिए गए फॉर्म का उपयोग करें।",
+    symptomsDisclaimer: "लक्षणों को दर्ज करने से पैटर्न समझने में मदद मिलती है। यह कोई चिकित्सा निदान नहीं है। स्वास्थ्य संबंधी चिंताओं के लिए डॉक्टर से परामर्श लें।",
+    symptomsDeleteConfirm: "क्या आप इस लक्षण प्रविष्टि को हटाना चाहती हैं?",
+    symptomsErrorLoad: "लक्षण लोड करने में असमर्थ।",
+    symptomsErrorSave: "लक्षण प्रविष्टि सहेजने में असमर्थ।",
+    symptomsErrorDelete: "लक्षण प्रविष्टि हटाने में असमर्थ।",
+    remindersKicker: "रिमाइंडर",
+    remindersHeading: "दवा और देखभाल रिमाइंडर",
+    remindersIntro: "दवाओं, सप्लीमेंट्स या निवारक देखभाल के लिए रिमाइंडर सेट करें।",
+    remindersLoading: "आपके रिमाइंडर लोड हो रहे हैं…",
+    remindersLabelTitle: "शीर्षक",
+    remindersPlaceholderTitle: "जैसे: आयरन की गोली, प्रसवपूर्व विटामिन",
+    remindersLabelType: "प्रकार",
+    remindersTypeMedication: "दवा",
+    remindersTypePreventive: "निवारक देखभाल",
+    remindersLabelFrequency: "आवृत्ति",
+    remindersFreqDaily: "दैनिक",
+    remindersFreqWeekly: "साप्ताहिक",
+    remindersFreqMonthly: "मासिक",
+    remindersFreqCustom: "कस्टम",
+    remindersLabelTime: "दिन का समय (वैकल्पिक)",
+    remindersLabelActive: "सक्रिय",
+    remindersButtonAdd: "रिमाइंडर जोड़ें",
+    remindersButtonUpdate: "रिमाइंडर अपडेट करें",
+    remindersHistoryHeading: "सक्रिय और आगामी",
+    remindersEmptyTitle: "कोई रिमाइंडर निर्धारित नहीं है",
+    remindersEmptyText: "अपनी स्वास्थ्य दिनचर्या को नियमित रखने के लिए ऊपर दवा या देखभाल का रिमाइंडर जोड़ें।",
+    remindersDisclaimer: "सखी आपके रिमाइंडर स्थानीय सर्वर पर सुरक्षित रखती है। यह पुश नोटिफिकेशन या एसएमएस नहीं भेजती — कृपया इस पेज की जाँच करें या समय पर दवाओं के लिए फोन अलार्म सेट करें।",
+    remindersDeleteConfirm: "क्या आप इस रिमाइंडर को हटाना चाहती हैं?",
+    remindersErrorLoad: "रिमाइंडर लोड करने में असमर्थ।",
+    remindersErrorSave: "रिमाइंडर सहेजने में असमर्थ।",
+    remindersErrorDelete: "रिमाइंडर हटाने में असमर्थ।",
+    remindersErrorUpdate: "रिमाइंडर अपडेट करने में असमर्थ।",
+    reportsKicker: "चिकित्सा रिपोर्ट",
+    reportsHeading: "आपकी मेडिकल रिपोर्ट",
+    reportsIntro: "अपने मेडिकल दस्तावेज़ सुरक्षित रूप से अपलोड करें, देखें और डाउनलोड करें।",
+    reportsLoading: "आपकी रिपोर्ट लोड हो रही हैं…",
+    reportsLabelChooseFile: "फ़ाइल चुनें",
+    reportsHint: "अनुमत: PDF, PNG, JPG। अधिकतम 5 MB। फ़ाइलें निजी तौर पर संग्रहीत हैं और केवल आप तक सीमित हैं।",
+    reportsButtonUpload: "रिपोर्ट अपलोड करें",
+    reportsButtonUploading: "अपलोड हो रहा है…",
+    reportsHistoryHeading: "आपकी फ़ाइलें",
+    reportsEmptyTitle: "अभी तक कोई रिपोर्ट अपलोड नहीं हुई",
+    reportsEmptyText: "अपलोड की गई रिपोर्ट निजी रूप से संग्रहीत हैं और केवल आपके खाते के लिए सुलभ हैं। सखी आपकी फ़ाइलों पर OCR या AI विश्लेषण नहीं करती है।",
+    reportsDeleteConfirm: "क्या आप इस रिपोर्ट को हटाना चाहती हैं?",
+    reportsErrorLoad: "रिपोर्ट लोड करने में असमर्थ।",
+    reportsErrorUpload: "रिपोर्ट अपलोड करने में असमर्थ।",
+    reportsErrorDelete: "रिपोर्ट हटाने में असमर्थ।",
+    reportsErrorFileType: "फ़ाइल प्रकार की अनुमति नहीं है। अनुमत: .pdf, .png, .jpg, .jpeg",
+    reportsErrorFileSize: "फ़ाइल बहुत बड़ी है। अधिकतम आकार 5 MB है।",
+    footerCare: "ऐसी देखभाल जो आपको प्राथमिकता दे",
+    footerKnowledge: "हर चरण के लिए ज्ञान",
+    footerLanguage: "आपकी अपनी भाषा में स्वास्थ्य जानकारी",
+    footerTagline: "आपकी स्वास्थ्य यात्रा का एक सच्चा साथी।",
+    footerCompanion: "आपकी स्वास्थ्य यात्रा का एक सच्चा साथी।",
+    footerDisclaimer: "केवल शिक्षा और सहयोग के लिए। पेशेवर चिकित्सा सलाह का विकल्प नहीं।",
   },
   ಕನ್ನಡ: {
     home: "ಮುಖಪುಟ",
@@ -264,6 +496,9 @@ const translations = {
     heroSubtitle: "ನಿಮ್ಮ ಆರೋಗ್ಯ ಪ್ರತಿ ದಿನ ಮುಖ್ಯ. ನಂಬಲರ್ಹ ಆರೋಗ್ಯ ಶಿಕ್ಷಣವನ್ನು ಪಡೆಯಿರಿ, ನಿಮ್ಮ ಯೋಗಕ್ಷೇಮವನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ ಮತ್ತು ಆತ್ಮವಿಶ್ವಾಸದಿಂದ ಮುಂದಿನ ಹೆಜ್ಜೆ ಇಡಿ.",
     heroPrimaryButton: "ನಿಮ್ಮ ಆರೋಗ್ಯವನ್ನು ಅನ್ವೇಷಿಸಿ",
     heroSecondaryButton: "ಅನ್ವೇಷಿಸಿ ಮತ್ತು ತಿಳಿಯಿರಿ",
+    heroTrustTagline: "ಮಹಿಳೆಯರ ಯೋಗಕ್ಷೇಮಕ್ಕಾಗಿ ರೂಪಿಸಲಾದ, ಕಾಳಜಿ ಮತ್ತು ಬೆಂಬಲದ ವೇದಿಕೆ.",
+    heroTagline: "ಮಹಿಳೆಯರ ಯೋಗಕ್ಷೇಮಕ್ಕಾಗಿ ರೂಪಿಸಲಾದ, ಕಾಳಜಿ ಮತ್ತು ಬೆಂಬಲದ ವೇದಿಕೆ.",
+    heroTrustNote: "ಮಹಿಳೆಯರ ಯೋಗಕ್ಷೇಮಕ್ಕಾಗಿ ರೂಪಿಸಲಾದ, ಕಾಳಜಿ ಮತ್ತು ಬೆಂಬಲದ ವೇದಿಕೆ.",
     trackerKicker: "ನಿಮ್ಮೊಂದಿಗೆ ಒಂದು ಸಣ್ಣ ಚೆಕ್-ಇನ್",
     trackerHeading: "ನಿಮ್ಮ ಆರೋಗ್ಯ, ನಿಮ್ಮ ಆಯ್ಕೆ",
     trackerIntro: "ನೀವು ಹೇಗೆ ಅನುಭವಿಸುತ್ತಿದ್ದೀರಿ ಎಂಬುದರ ಖಾಸಗಿ ದಾಖಲೆಯನ್ನು, ಒಂದು ದಿನದಿಂದ ಒಂದು ದಿನಕ್ಕೆ ಇರಿಸಿಕೊಳ್ಳಿ.",
@@ -374,6 +609,119 @@ const translations = {
     chatReplyHormonal: "🌼 ಹಾರ್ಮೋನ್ ಆರೋಗ್ಯ: ಮುಟ್ಟಿನ ಚಕ್ರ, ಪ್ರೌಢಾವಸ್ಥೆ ಮತ್ತು ಬೆಳವಣಿಗೆಯಂತಹ ಪ್ರಕ್ರಿಯೆಗಳನ್ನು ನಿಯಂತ್ರಿಸಲು ಹಾರ್ಮೋನುಗಳು ಸಹಾಯ ಮಾಡುತ್ತವೆ. PCOS ಅಥವಾ PMS ನಂತಹ ಸ್ಥಿತಿಗಳು ಹಾರ್ಮೋನ್ ಬದಲಾವಣೆಗಳೊಂದಿಗೆ ಸಂಬಂಧ ಹೊಂದಿವೆ. ಕೇವಲ ಲಕ್ಷಣಗಳು ಸ್ಥಿತಿಯನ್ನು ದೃಢಪಡಿಸುವುದಿಲ್ಲ; ವೈದ್ಯರ ಸಲಹೆ ಪಡೆಯುವುದು ಉತ್ತಮ.",
     chatReplyThanks: "ನಿಮಗೆ ಸ್ವಾಗತ! 🌸 ಸಾಮಾನ್ಯ ಆರೋಗ್ಯ ಶಿಕ್ಷಣಕ್ಕಾಗಿ ಸಖಿ ಕಲಿಯಿರಿ ವಿಭಾಗವನ್ನು ಅನ್ವೇಷಿಸುವುದನ್ನು ಮುಂದುವರಿಸಿ.",
     chatReplyFallback: "ನಾನು ಡೆಮೊ ಸಹಾಯಕಿ, ಆದ್ದರಿಂದ ಎಲ್ಲಾ ಪ್ರಶ್ನೆಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸಾಧ್ಯವಾಗದಿರಬಹುದು. ದಯವಿಟ್ಟು ಮುಟ್ಟು, ಪೋಷಣೆ, ಮೂಳೆಗಳ ಆರೋಗ್ಯ ಅಥವಾ ಹಾರ್ಮೋನ್‌ಗಳ ಬಗ್ಗೆ ಕೇಳಿ ನೋಡಿ. ವೈದ್ಯಕೀಯ ಕಾಳಜಿಗಳಿಗಾಗಿ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+    signIn: "ಸೈನ್ ಇನ್",
+    createAccount: "ಖಾತೆ ರಚಿಸಿ",
+    signOut: "ಸೈನ್ ಔಟ್",
+    authSignInTitle: "ಸಖಿಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ",
+    authSignInSubtitle: "ಮರಳಿ ಸ್ವಾಗತ. ನಿಮ್ಮ ಆರೋಗ್ಯ ದಾಖಲೆಗಳನ್ನು ಪ್ರವೇಶಿಸಲು ನಿಮ್ಮ ಇಮೇಲ್ ಮತ್ತು ಪಾಸ್‌ವರ್ಡ್ ನಮೂದಿಸಿ.",
+    authRegisterTitle: "ನಿಮ್ಮ ಸಖಿ ಖಾತೆಯನ್ನು ರಚಿಸಿ",
+    authRegisterSubtitle: "ನಿಮ್ಮ ಆರೋಗ್ಯ ದಾಖಲೆಗಳನ್ನು ಖಾಸಗಿ ಮತ್ತು ಸುರಕ್ಷಿತವಾಗಿಡಲು ಸಖಿಯೊಂದಿಗೆ ಸೇರಿ.",
+    authFullName: "ಪೂರ್ಣ ಹೆಸರು",
+    authOptional: "(ಐಚ್ಛಿಕ)",
+    authFullNamePlaceholder: "ನಿಮ್ಮ ಹೆಸರು",
+    authEmail: "ಇಮೇಲ್",
+    authEmailPlaceholder: "you@example.com",
+    authPassword: "ಪಾಸ್‌ವರ್ಡ್",
+    authPasswordPlaceholder: "••••••••",
+    authPasswordHint: "ಕನಿಷ್ಠ 6 ಅಕ್ಷರಗಳು",
+    authSignInBtn: "ಸೈನ್ ಇನ್ ↗",
+    authSigningIn: "ಸೈನ್ ಇನ್ ಆಗುತ್ತಿದೆ…",
+    authRegisterBtn: "ಖಾತೆ ರಚಿಸಿ ↗",
+    authRegistering: "ಖಾತೆ ರಚಿಸಲಾಗುತ್ತಿದೆ…",
+    authNoAccount: "ಖಾತೆ ಇಲ್ಲವೇ?",
+    authHaveAccount: "ಈಗಾಗಲೇ ಖಾತೆ ಹೊಂದಿದ್ದೀರಾ?",
+    authErrorInvalidCredentials: "ಅಮಾನ್ಯ ಇಮೇಲ್ ಅಥವಾ ಪಾಸ್‌ವರ್ಡ್.",
+    authErrorGeneric: "ಸೈನ್ ಇನ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    authErrorEmailExists: "ಈ ಇಮೇಲ್‌ನೊಂದಿಗೆ ಖಾತೆ ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ.",
+    authErrorRegisterGeneric: "ಖಾತೆ ರಚಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    authRequiredTitle: "ಸೈನ್ ಇನ್ ಅಗತ್ಯವಿದೆ",
+    authRequiredText: "ನಿಮ್ಮ ಖಾಸಗಿ ಆರೋಗ್ಯ ದಾಖಲೆಗಳನ್ನು ಪ್ರವೇಶಿಸಲು ದಯವಿಟ್ಟು ಸೈನ್ ಇನ್ ಮಾಡಿ ಅಥವಾ ಖಾತೆ ರಚಿಸಿ.",
+    authLoadingSession: "ಸೆಷನ್ ಲೋಡ್ ಆಗುತ್ತಿದೆ…",
+    actionCancel: "ರದ್ದುಮಾಡಿ",
+    actionEdit: "ಸಂಪಾದಿಸಿ",
+    actionDelete: "ಅಳಿಸಿ",
+    actionUpdate: "ದಾಖಲೆಯನ್ನು ನವೀಕರಿಸಿ",
+    actionSave: "ಉಳಿಸಿ",
+    actionRemove: "ತೆಗೆದುಹಾಕಿ",
+    actionDownload: "ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+    actionActivate: "ಸಕ್ರಿಯಗೊಳಿಸಿ",
+    actionDeactivate: "ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ",
+    actionSaving: "ಉಳಿಸಲಾಗುತ್ತಿದೆ…",
+    actionUploading: "ಅಪ್‌ಲೋಡ್ ಆಗುತ್ತಿದೆ…",
+    sessionExpired: "ಸೆಷನ್ ಅವಧಿ ಮೀರಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಸೈನ್ ಇನ್ ಮಾಡಿ.",
+    symptomsKicker: "ರೋಗಲಕ್ಷಣಗಳು",
+    symptomsHeading: "ರೋಗಲಕ್ಷಣ ಲಾಗ್",
+    symptomsIntro: "ನೀವು ಹೇಗೆ ಅನುಭವಿಸುತ್ತೀರಿ ಎಂಬುದನ್ನು ದಾಖಲಿಸಿ. ಇದು ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಅರಿವಿಗಾಗಿ — ರೋಗನಿರ್ಣಯವಲ್ಲ.",
+    symptomsLoading: "ನಿಮ್ಮ ರೋಗಲಕ್ಷಣಗಳು ಲೋಡ್ ಆಗುತ್ತಿವೆ…",
+    symptomsLabelSymptom: "ರೋಗಲಕ್ಷಣ",
+    symptomsPlaceholderSymptom: "ಉದಾ: ಸೆಳೆತ, ತಲೆನೋವು, ಆಯಾಸ",
+    symptomsLabelSeverity: "ತೀವ್ರತೆ",
+    symptomsSeverityMild: "ಸೌಮ್ಯ",
+    symptomsSeverityModerate: "ಮಧ್ಯಮ",
+    symptomsSeveritySevere: "ತೀವ್ರ",
+    symptomsLabelDateTime: "ದಿನಾಂಕ ಮತ್ತು ಸಮಯ",
+    symptomsLabelNotes: "ಟಿಪ್ಪಣಿಗಳು (ಐಚ್ಛಿಕ)",
+    symptomsPlaceholderNotes: "ನೀವು ನೆನಪಿಟ್ಟುಕೊಳ್ಳಲು ಬಯಸುವ ಅಂಶಗಳು…",
+    symptomsButtonLog: "ರೋಗಲಕ್ಷಣ ದಾಖಲಿಸಿ",
+    symptomsButtonUpdate: "ದಾಖಲೆಯನ್ನು ನವೀಕರಿಸಿ",
+    symptomsHistoryHeading: "ನಿಮ್ಮ ರೋಗಲಕ್ಷಣಗಳ ದಾಖಲೆ",
+    symptomsEmptyTitle: "ಇನ್ನೂ ಯಾವುದೇ ರೋಗಲಕ್ಷಣ ದಾಖಲಾಗಿಲ್ಲ",
+    symptomsEmptyText: "ನೀವು ಗಮನಿಸುವ ಯಾವುದೇ ಲಕ್ಷಣಗಳನ್ನು ದಾಖಲಿಸಲು ಮೇಲಿನ ಫಾರ್ಮ್ ಬಳಸಿ.",
+    symptomsDisclaimer: "ರೋಗಲಕ್ಷಣ ದಾಖಲಿಸುವುದು ಬದಲಾವಣೆಗಳನ್ನು ಗಮನಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ. ಇದು ವೈದ್ಯಕೀಯ ರೋಗನಿರ್ಣಯವಲ್ಲ. ಆರೋಗ್ಯ ಕಾಳಜಿಗಳಿಗಾಗಿ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+    symptomsDeleteConfirm: "ಈ ರೋಗಲಕ್ಷಣ ದಾಖಲೆಯನ್ನು ಅಳಿಸಲು ನೀವು ಬಯಸುವಿರಾ?",
+    symptomsErrorLoad: "ರೋಗಲಕ್ಷಣಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+    symptomsErrorSave: "ರೋಗಲಕ್ಷಣ ದಾಖಲೆ ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+    symptomsErrorDelete: "ರೋಗಲಕ್ಷಣ ದಾಖಲೆ ಅಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+    remindersKicker: "ಜ್ಞಾಪನೆಗಳು",
+    remindersHeading: "ಔಷಧಿ ಮತ್ತು ಆರೈಕೆ ಜ್ಞಾಪನೆಗಳು",
+    remindersIntro: "ಔಷಧಿಗಳು, ಪೂರಕಗಳು ಅಥವಾ ತಪಾಸಣೆಗಾಗಿ ಜ್ಞಾಪನೆಗಳನ್ನು ಹೊಂದಿಸಿ.",
+    remindersLoading: "ನಿಮ್ಮ ಜ್ಞಾಪನೆಗಳು ಲೋಡ್ ಆಗುತ್ತಿವೆ…",
+    remindersLabelTitle: "ಶೀರ್ಷಿಕೆ",
+    remindersPlaceholderTitle: "ಉದಾ: ಕಬ್ಬಿಣಾಂಶ ಮಾತ್ರೆ, ಜೀವಸತ್ವಗಳು",
+    remindersLabelType: "ವಿಧ",
+    remindersTypeMedication: "ಔಷಧಿ",
+    remindersTypePreventive: "ಮುನ್ನೆಚ್ಚರಿಕೆ ಆರೈಕೆ",
+    remindersLabelFrequency: "ಆವರ್ತನ",
+    remindersFreqDaily: "ದೈನಂದಿನ",
+    remindersFreqWeekly: "ಸಾಪ್ತಾಹಿಕ",
+    remindersFreqMonthly: "ಮಾಸಿಕ",
+    remindersFreqCustom: "ಕಸ್ಟಮ್",
+    remindersLabelTime: "ದಿನದ ಸಮಯ (ಐಚ್ಛಿಕ)",
+    remindersLabelActive: "ಸಕ್ರಿಯ",
+    remindersButtonAdd: "ಜ್ಞಾಪನೆ ಸೇರಿಸಿ",
+    remindersButtonUpdate: "ಜ್ಞಾಪನೆ ನವೀಕರಿಸಿ",
+    remindersHistoryHeading: "ಸಕ್ರಿಯ ಮತ್ತು ಮುಂಬರುವ",
+    remindersEmptyTitle: "ಯಾವುದೇ ಜ್ಞಾಪನೆಗಳಿಲ್ಲ",
+    remindersEmptyText: "ಆರೋಗ್ಯ ದಿನಚರಿಯನ್ನು ಮುಂದುವರಿಸಲು ಮೇಲೆ ಔಷಧಿ ಅಥವಾ ಆರೈಕೆ ಜ್ಞಾಪನೆಯನ್ನು ಸೇರಿಸಿ.",
+    remindersDisclaimer: "ಸಖಿ ನಿಮ್ಮ ಜ್ಞಾಪನೆಗಳನ್ನು ಸ್ಥಳೀಯವಾಗಿ ಸಂಗ್ರಹಿಸುತ್ತದೆ. ಇದು ಪುಶ್ ಸಂದೇಶಗಳನ್ನು ಕಳುಹಿಸುವುದಿಲ್ಲ — ದಯವಿಟ್ಟು ಈ ಪುಟವನ್ನು ಪರಿಶೀಲಿಸಿ ಅಥವಾ ಫೋನ್‌ನಲ್ಲಿ ಅಲಾರಾಂ ಹೊಂದಿಸಿ.",
+    remindersDeleteConfirm: "ಈ ಜ್ಞಾಪನೆಯನ್ನು ಅಳಿಸಲು ನೀವು ಬಯಸುವಿರಾ?",
+    remindersErrorLoad: "ಜ್ಞಾಪನೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+    remindersErrorSave: "ಜ್ಞಾಪನೆಯನ್ನು ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+    remindersErrorDelete: "ಜ್ಞಾಪನೆಯನ್ನು ಅಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+    remindersErrorUpdate: "ಜ್ಞಾಪನೆಯನ್ನು ನವೀಕರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+    reportsKicker: "ವೈದ್ಯಕೀಯ ವರದಿಗಳು",
+    reportsHeading: "ನಿಮ್ಮ ವೈದ್ಯಕೀಯ ವರದಿಗಳು",
+    reportsIntro: "ನಿಮ್ಮ ವೈದ್ಯಕೀಯ ದಾಖಲೆಗಳನ್ನು ಸುರಕ್ಷಿತವಾಗಿ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ, ವೀಕ್ಷಿಸಿ ಮತ್ತು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.",
+    reportsLoading: "ನಿಮ್ಮ ವರದಿಗಳು ಲೋಡ್ ಆಗುತ್ತಿವೆ…",
+    reportsLabelChooseFile: "ಫೈಲ್ ಆಯ್ಕೆಮಾಡಿ",
+    reportsHint: "ಅನುಮತಿಸಿದ ಫೈಲ್‌ಗಳು: PDF, PNG, JPG. ಗರಿಷ್ಠ 5 MB. ಫೈಲ್‌ಗಳನ್ನು ಖಾಸಗಿಯಾಗಿ ಸಂಗ್ರಹಿಸಲಾಗಿದೆ ಮತ್ತು ನಿಮಗೆ ಮಾತ್ರ ಲಭ್ಯವಿರುತ್ತದೆ.",
+    reportsButtonUpload: "ವರದಿ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+    reportsButtonUploading: "ಅಪ್‌ಲೋಡ್ ಆಗುತ್ತಿದೆ…",
+    reportsHistoryHeading: "ನಿಮ್ಮ ಫೈಲ್‌ಗಳು",
+    reportsEmptyTitle: "ಇನ್ನೂ ಯಾವುದೇ ವರದಿ ಅಪ್‌ಲೋಡ್ ಆಗಿಲ್ಲ",
+    reportsEmptyText: "ಅಪ್‌ಲೋಡ್ ಮಾಡಿದ ವರದಿಗಳನ್ನು ಖಾಸಗಿಯಾಗಿ ಸಂಗ್ರಹಿಸಲಾಗುತ್ತದೆ ಮತ್ತು ನಿಮ್ಮ ಖಾತೆಗೆ ಮಾತ್ರ ಪ್ರವೇಶವಿರುತ್ತದೆ. ಸಖಿ ನಿಮ್ಮ ಫೈಲ್‌ಗಳ ಮೇಲೆ OCR ಅಥವಾ AI ವಿಶ್ಲೇಷಣೆಯನ್ನು ನಡೆಸುವುದಿಲ್ಲ.",
+    reportsDeleteConfirm: "ಈ ವರದಿಯನ್ನು ಅಳಿಸಲು ನೀವು ಬಯಸುವಿರಾ?",
+    reportsErrorLoad: "ವರದಿಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+    reportsErrorUpload: "ವರದಿ ಅಪ್‌ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+    reportsErrorDelete: "ವರದಿ ಅಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+    reportsErrorFileType: "ಫೈಲ್ ಪ್ರಕಾರಕ್ಕೆ ಅನುಮತಿಯಿಲ್ಲ. ಅನುಮತಿಸಿದ ವಿಧಗಳು: .pdf, .png, .jpg, .jpeg",
+    reportsErrorFileSize: "ಫೈಲ್ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ. ಗರಿಷ್ಠ ಮಿತಿ 5 MB ಆಗಿದೆ.",
+    footerCare: "ನಿಮಗೆ ಮೊದಲ ಆದ್ಯತೆ ನೀಡುವ ಆರೈಕೆ",
+    footerKnowledge: "ಪ್ರತಿಯೊಂದು ಹಂತಕ್ಕೂ ಜ್ಞಾನ",
+    footerLanguage: "ನಿಮ್ಮದೇ ಭಾಷೆಯಲ್ಲಿ ಆರೋಗ್ಯ ಮಾಹಿತಿ",
+    footerTagline: "ನಿಮ್ಮ ಆರೋಗ್ಯ ಪ್ರಯಾಣದ ಆಪ್ತ ಸಂಗಾತಿ.",
+    footerCompanion: "ನಿಮ್ಮ ಆರೋಗ್ಯ ಪ್ರಯಾಣದ ಆಪ್ತ ಸಂಗಾತಿ.",
+    footerDisclaimer: "ಕೇವಲ ಶಿಕ್ಷಣ ಮತ್ತು ಬೆಂಬಲಕ್ಕಾಗಿ ಮಾತ್ರ. ವೃತ್ತಿಪರ ವೈದ್ಯಕೀಯ ಆರೈಕೆಗೆ ಪರ್ಯಾಯವಲ್ಲ.",
   },
   தமிழ்: {
     home: "முகப்பு",
@@ -384,6 +732,9 @@ const translations = {
     heroSubtitle: "உங்கள் ஆரோக்கியம் ஒவ்வொரு நாளும் முக்கியம். நம்பகமான ஆரோக்கியக் கல்வியைப் பெறுங்கள், உங்கள் நல்வாழ்வைப் புரிந்துகொண்டு நம்பிக்கையுடன் அடுத்த அடியை எடுங்கள்.",
     heroPrimaryButton: "உங்கள் ஆரோக்கியத்தை ஆராயுங்கள்",
     heroSecondaryButton: "கண்டறிந்து கற்றுக்கொள்ளுங்கள்",
+    heroTrustTagline: "பெண்களை மனதில் கொண்டு உருவாக்கப்பட்ட, ஆதரவான தளம்.",
+    heroTagline: "பெண்களை மனதில் கொண்டு உருவாக்கப்பட்ட, ஆதரவான தளம்.",
+    heroTrustNote: "பெண்களை மனதில் கொண்டு உருவாக்கப்பட்ட, ஆதரவான தளம்.",
     trackerKicker: "உங்களுடன் ஒரு சிறிய சரிபார்ப்பு",
     trackerHeading: "உங்கள் ஆரோக்கியம், உங்கள் விருப்பம்",
     trackerIntro: "நீங்கள் எப்படி உணர்கிறீர்கள் என்பதன் தனிப்பட்ட பதிவை, ஒரு நாள் ஒரு நாளாக வைத்திருங்கள்.",
@@ -494,6 +845,119 @@ const translations = {
     chatReplyHormonal: "🌼 ஹார்மோன் ஆரோக்கியம்: மாதவிடாய் சுழற்சி, பருவமடைதல் மற்றும் வளர்ச்சி உள்ளிட்ட பல உடல் செயல்பாடுகளை ஹார்மோன்கள் சீராக்குகின்றன. PCOS அல்லது PMS போன்ற நிலைகள் ஹார்மோன் மாற்றங்களுடன் தொடர்புடையவை. அறிகுறிகள் மட்டுமே ஒரு நிலையை உறுதிப்படுத்தாது; மருத்துவரிடம் ஆலோசனை பெறுவது நல்லது.",
     chatReplyThanks: "வரவேற்கிறோம்! 🌸 பொதுவான சுகாதாரக் கல்விக்காக சகியின் கற்றுக்கொள்ளுங்கள் பகுதியைத் தொடர்ந்து ஆராயுங்கள்.",
     chatReplyFallback: "நான் ஒரு டெமோ உதவியாளர், எனவே எல்லா கேள்விகளையும் என்னால் புரிந்துகொள்ள முடியாமல் போகலாம். மாதவிடாய், ஊட்டச்சத்து, எலும்பு நலம் அல்லது ஹார்மோன்கள் பற்றி கேட்டுப் பாருங்கள். தனிப்பட்ட மருத்துவக் கவலைகளுக்கு தகுதியான மருத்துவரிடம் ஆலோசிக்கவும்.",
+    signIn: "உள்நுழையவும்",
+    createAccount: "கணக்கை உருவாக்கவும்",
+    signOut: "வெளியேறவும்",
+    authSignInTitle: "சகியில் உள்நுழையவும்",
+    authSignInSubtitle: "மீண்டும் வருக. உங்கள் சுகாதாரப் பதிவுகளை அணுக உங்கள் மின்னஞ்சல் மற்றும் கடவுச்சொல்லை உள்ளிடவும்.",
+    authRegisterTitle: "உங்கள் சகி கணக்கை உருவாக்கவும்",
+    authRegisterSubtitle: "உங்கள் சுகாதாரப் பதிவுகளை தனிப்பட்டதாகவும் பாதுகாப்பாகவும் வைத்திருக்க சகியில் இணையுங்கள்.",
+    authFullName: "முழு பெயர்",
+    authOptional: "(விருப்பத்திற்குரியது)",
+    authFullNamePlaceholder: "உங்கள் பெயர்",
+    authEmail: "மின்னஞ்சல்",
+    authEmailPlaceholder: "you@example.com",
+    authPassword: "கடவுச்சொல்",
+    authPasswordPlaceholder: "••••••••",
+    authPasswordHint: "குறைந்தது 6 எழுத்துகள்",
+    authSignInBtn: "உள்நுழையவும் ↗",
+    authSigningIn: "உள்நுழைகிறது…",
+    authRegisterBtn: "கணக்கை உருவாக்கவும் ↗",
+    authRegistering: "கணக்கு உருவாக்கப்படுகிறது…",
+    authNoAccount: "கணக்கு இல்லையா?",
+    authHaveAccount: "ஏற்கனவே கணக்கு உள்ளதா?",
+    authErrorInvalidCredentials: "தவறான மின்னஞ்சல் அல்லது கடவுச்சொல்.",
+    authErrorGeneric: "உள்நுழைய முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
+    authErrorEmailExists: "இந்த மின்னஞ்சலில் ஏற்கனவே ஒரு கணக்கு உள்ளது.",
+    authErrorRegisterGeneric: "கணக்கை உருவாக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
+    authRequiredTitle: "உள்நுழைவு தேவைப்படுகிறது",
+    authRequiredText: "உங்கள் தனிப்பட்ட சுகாதாரப் பதிவுகளை அணுக தயவுசெய்து உள்நுழையவும் அல்லது கணக்கை உருவாக்கவும்.",
+    authLoadingSession: "அமர்வு ஏற்றப்படுகிறது…",
+    actionCancel: "ரத்து செய்",
+    actionEdit: "திருத்து",
+    actionDelete: "நீக்கு",
+    actionUpdate: "பதிவை புதுப்பிக்கவும்",
+    actionSave: "சேமிக்கவும்",
+    actionRemove: "அகற்று",
+    actionDownload: "பதிவிறக்கவும்",
+    actionActivate: "செயல்படுத்து",
+    actionDeactivate: "செயலிழக்கச் செய்",
+    actionSaving: "சேமிக்கப்படுகிறது…",
+    actionUploading: "பதிவேற்றப்படுகிறது…",
+    sessionExpired: "அமர்வு முடிந்துவிட்டது. மீண்டும் உள்நுழையவும்.",
+    symptomsKicker: "அறிகுறிகள்",
+    symptomsHeading: "அறிகுறி பதிவு",
+    symptomsIntro: "நீங்கள் எப்படி உணர்கிறீர்கள் என்பதைப் பதிவு செய்யுங்கள். இது உங்கள் தனிப்பட்ட விழிப்புணர்வுக்காக மட்டுமே — நோய் கண்டறிதல் அல்ல.",
+    symptomsLoading: "உங்கள் அறிகுறிகள் ஏற்றப்படுகின்றன…",
+    symptomsLabelSymptom: "அறிகுறி",
+    symptomsPlaceholderSymptom: "எ.கா: தசைப்பிடிப்பு, தலைவலி, சோர்வு",
+    symptomsLabelSeverity: "தீவிரம்",
+    symptomsSeverityMild: "மிதமானது",
+    symptomsSeverityModerate: "மிதமான",
+    symptomsSeveritySevere: "தீவிரமானது",
+    symptomsLabelDateTime: "தேதி மற்றும் நேரம்",
+    symptomsLabelNotes: "குறிப்புகள் (விருப்பத்திற்குரியது)",
+    symptomsPlaceholderNotes: "நீங்கள் நினைவில் கொள்ள விரும்பும் எதுவும்…",
+    symptomsButtonLog: "அறிகுறியைப் பதிவு செய்",
+    symptomsButtonUpdate: "பதிவை புதுப்பிக்கவும்",
+    symptomsHistoryHeading: "உங்கள் அறிகுறி பதிவுகள்",
+    symptomsEmptyTitle: "இதுவரை அறிகுறிகள் பதிவு செய்யப்படவில்லை",
+    symptomsEmptyText: "நீங்கள் கவனிக்கும் எந்தவொரு அறிகுறியையும் பதிவு செய்ய மேலே உள்ள படிவத்தைப் பயன்படுத்தவும்.",
+    symptomsDisclaimer: "அறிகுறிகளைப் பதிவு செய்வது சுழற்சியைப் புரிந்து கொள்ள உதவுகிறது. இது மருத்துவ நோய் கண்டறிதல் அல்ல. மருத்துவக் கவலைகளுக்கு தகுதியான மருத்துவரை அணுகவும்.",
+    symptomsDeleteConfirm: "இந்த அறிகுறி பதிவை நீக்க விரும்புகிறீர்களா?",
+    symptomsErrorLoad: "அறிகுறிகளை ஏற்ற முடியவில்லை.",
+    symptomsErrorSave: "அறிகுறி பதிவை சேமிக்க முடியவில்லை.",
+    symptomsErrorDelete: "அறிகுறி பதிவை நீக்க முடியவில்லை.",
+    remindersKicker: "நினைவூட்டல்கள்",
+    remindersHeading: "மருந்து மற்றும் பராமரிப்பு நினைவூட்டல்கள்",
+    remindersIntro: "மருந்துகள், சத்துணவு அல்லது முன்கூட்டிய பராமரிப்புக்கான நினைவூட்டல்களை அமைக்கவும்.",
+    remindersLoading: "உங்கள் நினைவூட்டல்கள் ஏற்றப்படுகின்றன…",
+    remindersLabelTitle: "தலைப்பு",
+    remindersPlaceholderTitle: "எ.கா: இரும்பு மாத்திரை, வைட்டமின்கள்",
+    remindersLabelType: "வகை",
+    remindersTypeMedication: "மருந்து",
+    remindersTypePreventive: "தடுப்பு பராமரிப்பு",
+    remindersLabelFrequency: "அதிர்வெண்",
+    remindersFreqDaily: "தினசரி",
+    remindersFreqWeekly: "வாராந்திர",
+    remindersFreqMonthly: "மாதாந்திர",
+    remindersFreqCustom: "தனிப்பயன்",
+    remindersLabelTime: "நேரம் (விருப்பத்திற்குரியது)",
+    remindersLabelActive: "செயலில் உள்ளது",
+    remindersButtonAdd: "நினைவூட்டலைச் சேர்",
+    remindersButtonUpdate: "நினைவூட்டலை புதுப்பிக்கவும்",
+    remindersHistoryHeading: "செயலில் உள்ளவை & வரவிருப்பவை",
+    remindersEmptyTitle: "நினைவூட்டல்கள் எதுவும் திட்டமிடப்படவில்லை",
+    remindersEmptyText: "உங்கள் ஆரோக்கிய நடைமுறையை சீராக வைத்திருக்க மேலே உள்ள மருந்து அல்லது பராமரிப்பு நினைவூட்டலைச் சேர்க்கவும்.",
+    remindersDisclaimer: "சகி உங்கள் நினைவூட்டல்களை உள்ளூர் சேவையகத்தில் பாதுகாப்பாக சேமிக்கிறது. இது புஷ் அறிவிப்புகளையோ எஸ்எம்எஸ்களையோ அனுப்பாது — தயவுசெய்து இந்தப் பக்கத்தைச் சரிபார்க்கவும் அல்லது தொலைபேசியில் அலாரம் வைக்கவும்.",
+    remindersDeleteConfirm: "இந்த நினைவூட்டலை நீக்க விரும்புகிறீர்களா?",
+    remindersErrorLoad: "நினைவூட்டல்களை ஏற்ற முடியவில்லை.",
+    remindersErrorSave: "நினைவூட்டலை சேமிக்க முடியவில்லை.",
+    remindersErrorDelete: "நினைவூட்டலை நீக்க முடியவில்லை.",
+    remindersErrorUpdate: "நினைவூட்டலை புதுப்பிக்க முடியவில்லை.",
+    reportsKicker: "மருத்துவ அறிக்கைகள்",
+    reportsHeading: "உங்கள் மருத்துவ அறிக்கைகள்",
+    reportsIntro: "உங்கள் மருத்துவ ஆவணங்களை பாதுகாப்பாக பதிவேற்றவும், பார்க்கவும் மற்றும் பதிவிறக்கவும்.",
+    reportsLoading: "உங்கள் அறிக்கைகள் ஏற்றப்படுகின்றன…",
+    reportsLabelChooseFile: "கோப்பைத் தேர்ந்தெடுக்கவும்",
+    reportsHint: "அனுமதிக்கப்பட்டவை: PDF, PNG, JPG. அதிகபட்சம் 5 MB. கோப்புகள் தனிப்பட்ட முறையில் சேமிக்கப்படுகின்றன, உங்களால் மட்டுமே அணுக முடியும்.",
+    reportsButtonUpload: "அறிக்கையைப் பதிவேற்றவும்",
+    reportsButtonUploading: "பதிவேற்றப்படுகிறது…",
+    reportsHistoryHeading: "உங்கள் கோப்புகள்",
+    reportsEmptyTitle: "இதுவரை எந்த அறிக்கைகளும் பதிவேற்றப்படவில்லை",
+    reportsEmptyText: "பதிவேற்றப்பட்ட அறிக்கைகள் தனிப்பட்ட முறையில் சேமிக்கப்பட்டு உங்கள் கணக்கிற்கு மட்டுமே அணுகக்கூடியவை. சகி உங்கள் கோப்புகளில் OCR அல்லது AI பகுப்பாய்வைச் செய்யாது.",
+    reportsDeleteConfirm: "இந்த அறிக்கையை நீக்க விரும்புகிறீர்களா?",
+    reportsErrorLoad: "அறிக்கைகளை ஏற்ற முடியவில்லை.",
+    reportsErrorUpload: "அறிக்கையைப் பதிவேற்ற முடியவில்லை.",
+    reportsErrorDelete: "அறிக்கையை நீக்க முடியவில்லை.",
+    reportsErrorFileType: "கோப்பு வகை அனுமதிக்கப்படவில்லை. அனுமதிக்கப்பட்டவை: .pdf, .png, .jpg, .jpeg",
+    reportsErrorFileSize: "கோப்பு மிகப்பெரியது. அதிகபட்ச அளவு 5 MB.",
+    footerCare: "உங்களுக்கு முன்னுரிமை அளிக்கும் பராமரிப்பு",
+    footerKnowledge: "ஒவ்வொரு கட்டத்திற்குமான விழிப்புணர்வு",
+    footerLanguage: "உங்கள் மொழியில் சுகாதாரத் தகவல்கள்",
+    footerTagline: "உங்கள் ஆரோக்கியப் பயணத்தின் தோழி.",
+    footerCompanion: "உங்கள் ஆரோக்கியப் பயணத்தின் தோழி.",
+    footerDisclaimer: "கல்வி மற்றும் ஆதரவிற்காக மட்டுமே. தொழில்முறை மருத்துவ சிகிச்சைக்கு மாற்றாகாது.",
   },
   తెలుగు: {
     home: "హోమ్",
@@ -504,6 +968,9 @@ const translations = {
     heroSubtitle: "మీ ఆరోగ్యం ప్రతి రోజు ముఖ్యం. నమ్మదగిన ఆరోగ్య విద్యను పొందండి, మీ శ్రేయస్సును అర్థం చేసుకుని నమ్మకంతో తదుపరి అడుగు వేయండి.",
     heroPrimaryButton: "మీ ఆరోగ్యాన్ని అన్వేషించండి",
     heroSecondaryButton: "కనుగొనండి మరియు నేర్చుకోండి",
+    heroTrustTagline: "మహిళల సంరక్షణను దృష్టిలో ఉంచుకుని రూపొందించిన ఒక ఆప్త వేదిక.",
+    heroTagline: "మహిళల సంరక్షణను దృష్టిలో ఉంచుకుని రూపొందించిన ఒక ఆప్త వేదిక.",
+    heroTrustNote: "మహిళల సంరక్షణను దృష్టిలో ఉంచుకుని రూపొందించిన ఒక ఆప్త వేదిక.",
     trackerKicker: "మీతో ఒక చిన్న చెక్-ఇన్",
     trackerHeading: "మీ ఆరోగ్యం, మీ ఇష్టం",
     trackerIntro: "మీరు ఎలా అనుభవిస్తున్నారో దాని ప్రైవేట్ రికార్డును, ఒక రోజు ఒకసారి ఉంచుకోండి.",
@@ -614,6 +1081,119 @@ const translations = {
     chatReplyHormonal: "🌼 హార్మోన్ల ఆరోగ్యం: రుతుచక్రం, యవ్వనం మరియు పెరుగుదల వంటి ప్రక్రియలను నియంత్రించడంలో హార్మోన్లు సహాయపడతాయి. PCOS లేదా PMS వంటి సమస్యలు హార్మోన్ల హెచ్చుతగ్గులతో ముడిపడి ఉంటాయి. కేవలం లక్షణాలతో నిర్ధారణ సాధ్యం కాదు; నిరంతర సమస్యలకు వైద్యుడిని సంప్రదించండి.",
     chatReplyThanks: "ధన్యవాదాలు! 🌸 సాధారణ ఆరోగ్య విద్య కోసం సఖి నేర్చుకోండి విభాగాన్ని అన్వేషిస్తూ ఉండండి.",
     chatReplyFallback: "నేను డెమో సహాయకుడిని, కాబట్టి ప్రతి ప్రశ్ననూ అర్థం చేసుకోలేకపోవచ్చు. దయచేసి పీరియడ్స్, పోషకాహారం, ఎముకల ఆరోగ్యం లేదా హార్మోన్ల గురించి అడగండి. వ్యక్తిగత వైద్య సమస్యల కోసం అర్హత కలిగిన వైద్యులను సంప్రదించండి.",
+    signIn: "సైన్ ఇన్",
+    createAccount: "ఖాతా సృష్టించండి",
+    signOut: "సైన్ అవుట్",
+    authSignInTitle: "సఖి లో సైన్ ఇన్ అవ్వండి",
+    authSignInSubtitle: "తిరిగి స్వాగతం. మీ ఆరోగ్య రికార్డులను యాక్సెస్ చేయడానికి మీ ఇమెయిల్ మరియు పాస్‌వర్డ్ నమోదు చేయండి.",
+    authRegisterTitle: "మీ సఖి ఖాతాను సృష్టించండి",
+    authRegisterSubtitle: "మీ ఆరోగ్య రికార్డులను ప్రైవేట్‌గా మరియు సురక్షితంగా ఉంచడానికి సఖిలో చేరండి.",
+    authFullName: "పూర్తి పేరు",
+    authOptional: "(ఐచ్ఛికం)",
+    authFullNamePlaceholder: "మీ పేరు",
+    authEmail: "ఇమెయిల్",
+    authEmailPlaceholder: "you@example.com",
+    authPassword: "పాస్‌వర్డ్",
+    authPasswordPlaceholder: "••••••••",
+    authPasswordHint: "కనీసం 6 అక్షరాలు",
+    authSignInBtn: "సైన్ ఇన్ ↗",
+    authSigningIn: "సైన్ ఇన్ అవుతోంది…",
+    authRegisterBtn: "ఖాతా సృష్టించండి ↗",
+    authRegistering: "ఖాతా సృష్టించబడుతోంది…",
+    authNoAccount: "ఖాతా లేదా?",
+    authHaveAccount: "ఇప్పటికే ఖాతా ఉందా?",
+    authErrorInvalidCredentials: "చెల్లని ఇమెయిల్ లేదా పాస్‌వర్డ్.",
+    authErrorGeneric: "సైన్ ఇన్ చేయడం సాధ్యపడలేదు. దయచేసి మళ్లీ ప్రయత్నించండి.",
+    authErrorEmailExists: "ఈ ఇమెయిల్‌తో ఇప్పటికే ఖాతా ఉంది.",
+    authErrorRegisterGeneric: "ఖాతా సృష్టించడం సాధ్యపడలేదు. దయచేసి మళ్లీ ప్రయత్నించండి.",
+    authRequiredTitle: "సైన్ ఇన్ అవసరం",
+    authRequiredText: "మీ ప్రైవేట్ ఆరోగ్య రికార్డులను యాక్సెస్ చేయడానికి దయచేసి సైన్ ఇన్ చేయండి లేదా ఖాతాను సృష్టించండి.",
+    authLoadingSession: "సెషన్ లోడ్ అవుతోంది…",
+    actionCancel: "రద్దు చేయండి",
+    actionEdit: "సవరించండి",
+    actionDelete: "తొలగించండి",
+    actionUpdate: "ఎంట్రీని నవీకరించండి",
+    actionSave: "సేవ్ చేయండి",
+    actionRemove: "తీసివేయండి",
+    actionDownload: "డౌన్‌లోడ్ చేయండి",
+    actionActivate: "యాక్టివేట్ చేయండి",
+    actionDeactivate: "డీయాక్టివేట్ చేయండి",
+    actionSaving: "సేవ్ అవుతోంది…",
+    actionUploading: "అప్‌లోడ్ అవుతోంది…",
+    sessionExpired: "సెషన్ ముగిసింది. దయచేసి మళ్లీ సైన్ ఇన్ చేయండి.",
+    symptomsKicker: "లక్షణాలు",
+    symptomsHeading: "లక్షణాల లాగ్",
+    symptomsIntro: "మీరు ఎలా అనుభవిస్తున్నారో రికార్డ్ చేయండి. ఇది మీ వ్యక్తిగత అవగాహన కోసం మాత్రమే — రోగ నిర్ధారణ కాదు.",
+    symptomsLoading: "మీ లక్షణాలు లోడ్ అవుతున్నాయి…",
+    symptomsLabelSymptom: "లక్షణం",
+    symptomsPlaceholderSymptom: "ఉదా: కండరాల తిమ్మిరి, తలనొప్పి, అలసట",
+    symptomsLabelSeverity: "తీవ్రత",
+    symptomsSeverityMild: "తేలికపాటి",
+    symptomsSeverityModerate: "మధ్యస్థ",
+    symptomsSeveritySevere: "తీవ్రమైన",
+    symptomsLabelDateTime: "తేదీ & సమయం",
+    symptomsLabelNotes: "గమనికలు (ఐచ్ఛికం)",
+    symptomsPlaceholderNotes: "మీరు గుర్తుంచుకోవాలనుకునే ఏదైనా…",
+    symptomsButtonLog: "లక్షణాన్ని నమోదు చేయండి",
+    symptomsButtonUpdate: "ఎంట్రీని నవీకరించండి",
+    symptomsHistoryHeading: "మీ లక్షణాల ఎంట్రీలు",
+    symptomsEmptyTitle: "ఇంకా ఎలాంటి లక్షణాలు నమోదు కాలేదు",
+    symptomsEmptyText: "మీరు గమనించే ఏవైనా లక్షణాలను నమోదు చేయడానికి పై ఫారమ్‌ను ఉపయోగించండి.",
+    symptomsDisclaimer: "లక్షణాలను రికార్డ్ చేయడం మార్పులను గమనించడానికి సహాయపడుతుంది. ఇది వైద్య నిర్ధారణ కాదు. ఆరోగ్య సమస్యల కోసం అర్హత కలిగిన వైద్యులను సంప్రదించండి.",
+    symptomsDeleteConfirm: "మీరు ఈ లక్షణాల ఎంట్రీని తొలగించాలనుకుంటున్నారా?",
+    symptomsErrorLoad: "లక్షణాలను లోడ్ చేయడం సాధ్యపడలేదు.",
+    symptomsErrorSave: "లక్షణాల ఎంట్రీని సేవ్ చేయడం సాధ్యపడలేదు.",
+    symptomsErrorDelete: "లక్షణాల ఎంట్రీని తొలగించడం సాధ్యపడలేదు.",
+    remindersKicker: "రిమైండర్లు",
+    remindersHeading: "మందులు & సంరక్షణ రిమైండర్లు",
+    remindersIntro: "మందులు, సప్లిమెంట్లు లేదా ముందస్తు సంరక్షణ కోసం రిమైండర్లను సెట్ చేయండి.",
+    remindersLoading: "మీ రిమైండర్లు లోడ్ అవుతున్నాయి…",
+    remindersLabelTitle: "శీర్షిక",
+    remindersPlaceholderTitle: "ఉదా: ఐరన్ టాబ్లెట్, ప్రినేటల్ విటమిన్",
+    remindersLabelType: "రకం",
+    remindersTypeMedication: "మందులు",
+    remindersTypePreventive: "ముందస్తు సంరక్షణ",
+    remindersLabelFrequency: "ఫ్రీక్వెన్సీ",
+    remindersFreqDaily: "రోజువారీ",
+    remindersFreqWeekly: "వారపు",
+    remindersFreqMonthly: "నెలవారీ",
+    remindersFreqCustom: "కస్టమ్",
+    remindersLabelTime: "సమయం (ఐచ్ఛికం)",
+    remindersLabelActive: "యాక్టివ్",
+    remindersButtonAdd: "రిమైండర్ జోడించండి",
+    remindersButtonUpdate: "రిమైండర్ నవీకరించండి",
+    remindersHistoryHeading: "యాక్టివ్ & రాబోయేవి",
+    remindersEmptyTitle: "రిమైండర్లు ఏవీ షెడ్యూల్ చేయబడలేదు",
+    remindersEmptyText: "మీ ఆరోగ్య దినచర్యను క్రమబద్ధంగా ఉంచడానికి పైన మందులు లేదా సంరక్షణ రిమైండర్‌ను జోడించండి.",
+    remindersDisclaimer: "సఖి మీ రిమైండర్లను సర్వర్‌లో భద్రపరుస్తుంది. ఇది నోటిఫికేషన్లు లేదా ఎస్ఎంఎస్ పంపదు — దయచేసి ఈ పేజీని పరిశీలించండి లేదా ఫోన్‌లో అలారం సెట్ చేసుకోండి.",
+    remindersDeleteConfirm: "మీరు ఈ రిమైండర్‌ను తొలగించాలనుకుంటున్నారా?",
+    remindersErrorLoad: "రిమైండర్లను లోడ్ చేయడం సాధ్యపడలేదు.",
+    remindersErrorSave: "రిమైండర్‌ను సేవ్ చేయడం సాధ్యపడలేదు.",
+    remindersErrorDelete: "రిమైండర్‌ను తొలగించడం సాధ్యపడలేదు.",
+    remindersErrorUpdate: "రిమైండర్‌ను నవీకరించడం సాధ్యపడలేదు.",
+    reportsKicker: "వైద్య నివేదికలు",
+    reportsHeading: "మీ వైద్య నివేదికలు",
+    reportsIntro: "మీ వైద్య పత్రాలను సురక్షితంగా అప్‌లోడ్ చేయండి, వీక్షించండి మరియు డౌన్‌లోడ్ చేయండి.",
+    reportsLoading: "మీ నివేదికలు లోడ్ అవుతున్నాయి…",
+    reportsLabelChooseFile: "ఫైల్‌ను ఎంచుకోండి",
+    reportsHint: "అనుమతించబడినవి: PDF, PNG, JPG. గరిష్ట పరిమాణం 5 MB. ఫైళ్లు ప్రైవేట్‌గా భద్రపరచబడతాయి మరియు మీకు మాత్రమే అందుబాటులో ఉంటాయి.",
+    reportsButtonUpload: "నివేదికను అప్‌లోడ్ చేయండి",
+    reportsButtonUploading: "అప్‌లోడ్ అవుతోంది…",
+    reportsHistoryHeading: "మీ ఫైళ్లు",
+    reportsEmptyTitle: "ఇంకా ఎలాంటి నివేదికలు అప్‌లోడ్ చేయలేదు",
+    reportsEmptyText: "అప్‌లోడ్ చేసిన నివేదికలు ప్రైవేట్‌గా నిల్వ చేయబడతాయి మరియు మీ ఖాతాకు మాత్రమే యాక్సెస్ చేయగలవు. సఖి మీ ఫైళ్లపై OCR లేదా AI విశ్లేషణను నిర్వహించదు.",
+    reportsDeleteConfirm: "మీరు ఈ నివేదికను తొలగించాలనుకుంటున్నారా?",
+    reportsErrorLoad: "నివేదికలను లోడ్ చేయడం సాధ్యపడలేదు.",
+    reportsErrorUpload: "నివేదికను అప్‌లోడ్ చేయడం సాధ్యపడలేదు.",
+    reportsErrorDelete: "నివేదికను తొలగించడం సాధ్యపడలేదు.",
+    reportsErrorFileType: "ఈ ఫైల్ రకం అనుమతించబడదు. అనుమతించబడినవి: .pdf, .png, .jpg, .jpeg",
+    reportsErrorFileSize: "ఫైల్ పరిమాణం చాలా పెద్దది. గరిష్ట పరిమాణం 5 MB.",
+    footerCare: "మీకు మొదటి ప్రాధాన్యతనిచ్చే సంరక్షణ",
+    footerKnowledge: "ప్రతి దశకు అవసరమైన జ్ఞానం",
+    footerLanguage: "మీ భాషలోనే ఆరోగ్య సమాచారం",
+    footerTagline: "మీ ఆరోగ్య ప్రయాణంలో ఒక ఆప్త సహచరి.",
+    footerCompanion: "మీ ఆరోగ్య ప్రయాణంలో ఒక ఆప్త సహచరి.",
+    footerDisclaimer: "కేవలం అవగాహన మరియు మద్దతు కోసం మాత్రమే. వృత్తిపరమైన వైద్య చికిత్సకు ప్రత్యామ్నాయం కాదు.",
   },
   বাংলা: {
     home: "হোম",
@@ -624,6 +1204,9 @@ const translations = {
     heroSubtitle: "আপনার স্বাস্থ্য প্রতিদিনই গুরুত্বপূর্ণ। বিশ্বস্ত স্বাস্থ্য শিক্ষা পান, আপনার সুস্থতা বুঝুন এবং আত্মবিশ্বাসের সাথে পরবর্তী পদক্ষেপ নিন।",
     heroPrimaryButton: "আপনার স্বাস্থ্য অন্বেষণ করুন",
     heroSecondaryButton: "আবিষ্কার করুন ও শিখুন",
+    heroTrustTagline: "নারীদের কথা ভেবে তৈরি, একটি যত্নশীল ও সহায়ক মাধ্যম।",
+    heroTagline: "নারীদের কথা ভেবে তৈরি, একটি যত্নশীল ও সহায়ক মাধ্যম।",
+    heroTrustNote: "নারীদের কথা ভেবে তৈরি, একটি যত্নশীল ও সহায়ক মাধ্যম।",
     trackerKicker: "নিজের সঙ্গে একটি ছোট চেক-ইন",
     trackerHeading: "আপনার স্বাস্থ্য, আপনার পছন্দ",
     trackerIntro: "আপনি কেমন অনুভব করছেন তার একটি ব্যক্তিগত রেকর্ড রাখুন, একদিন একদিন করে।",
@@ -734,6 +1317,119 @@ const translations = {
     chatReplyHormonal: "🌼 হরমোনজনিত স্বাস্থ্য: হরমোন মাসিক চক্র, বয়ঃসন্ধি এবং শারীরিক বৃদ্ধিসহ শরীরের বহু প্রক্রিয়া নিয়ন্ত্রণে সাহায্য করে। PCOS বা PMS-এর মতো অবস্থা হরমোনের পরিবর্তনের সাথে যুক্ত। শুধু লক্ষণ দেখে কোনো রোগ নিশ্চিত করা যায় না; দীর্ঘস্থায়ী উপসর্গের জন্য স্বাস্থ্যসেবা পেশাদারের পরামর্শ নিন।",
     chatReplyThanks: "আপনাকে স্বাগতম! 🌸 সাধারণ স্বাস্থ্য শিক্ষার জন্য সখীর শিখুন অংশটি অন্বেষণ করতে থাকুন।",
     chatReplyFallback: "আমি একটি ডেমো সহকারী, তাই সব প্রশ্ন হয়তো বুঝতে পারব না। অনুগ্রহ করে পিরিয়ড, পুষ্টি, হাড়ের স্বাস্থ্য বা হরমোন সম্পর্কে জিজ্ঞাসা করার চেষ্টা করুন। ব্যক্তিগত চিকিৎসা সংক্রান্ত উদ্বেগের জন্য যোগ্য স্বাস্থ্যসেবা পেশাদারের পরামর্শ নিন।",
+    signIn: "সাইন ইন",
+    createAccount: "অ্যাকাউন্ট তৈরি করুন",
+    signOut: "সাইন আউট",
+    authSignInTitle: "সখিতে সাইন ইন করুন",
+    authSignInSubtitle: "আবার স্বাগতম। আপনার স্বাস্থ্য রেকর্ড অ্যাক্সেস করতে আপনার ইমেল এবং পাসওয়ার্ড লিখুন।",
+    authRegisterTitle: "আপনার সখি অ্যাকাউন্ট তৈরি করুন",
+    authRegisterSubtitle: "আপনার স্বাস্থ্য রেকর্ড ব্যক্তিগত ও সুরক্ষিত রাখতে সখিতে যোগ দিন।",
+    authFullName: "সম্পূর্ণ নাম",
+    authOptional: "(ঐচ্ছিক)",
+    authFullNamePlaceholder: "আপনার নাম",
+    authEmail: "ইমেল",
+    authEmailPlaceholder: "you@example.com",
+    authPassword: "পাসওয়ার্ড",
+    authPasswordPlaceholder: "••••••••",
+    authPasswordHint: "কমপক্ষে ৬টি অক্ষর",
+    authSignInBtn: "সাইন ইন ↗",
+    authSigningIn: "সাইন ইন হচ্ছে…",
+    authRegisterBtn: "অ্যাকাউন্ট তৈরি করুন ↗",
+    authRegistering: "অ্যাকাউন্ট তৈরি হচ্ছে…",
+    authNoAccount: "অ্যাকাউন্ট নেই?",
+    authHaveAccount: "ইতিমধ্যেই একটি অ্যাকাউন্ট আছে?",
+    authErrorInvalidCredentials: "ভুল ইমেল বা পাসওয়ার্ড।",
+    authErrorGeneric: "সাইন ইন করা যায়নি। দয়া করে আবার চেষ্টা করুন।",
+    authErrorEmailExists: "এই ইমেল দিয়ে ইতিমধ্যেই একটি অ্যাকাউন্ট রয়েছে।",
+    authErrorRegisterGeneric: "অ্যাকাউন্ট তৈরি করা যায়নি। দয়া করে আবার চেষ্টা করুন।",
+    authRequiredTitle: "সাইন ইন প্রয়োজন",
+    authRequiredText: "আপনার ব্যক্তিগত স্বাস্থ্য রেকর্ড দেখতে দয়া করে সাইন ইন করুন বা একটি অ্যাকাউন্ট তৈরি করুন।",
+    authLoadingSession: "সেশন লোড হচ্ছে…",
+    actionCancel: "বাতিল করুন",
+    actionEdit: "সম্পাদনা করুন",
+    actionDelete: "মুছুন",
+    actionUpdate: "এন্ট্রি আপডেট করুন",
+    actionSave: "সংরক্ষণ করুন",
+    actionRemove: "সরান",
+    actionDownload: "ডাউনলোড করুন",
+    actionActivate: "সক্রিয় করুন",
+    actionDeactivate: "নিষ্ক্রিয় করুন",
+    actionSaving: "সংরক্ষণ করা হচ্ছে…",
+    actionUploading: "আপলোড করা হচ্ছে…",
+    sessionExpired: "সেশনের মেয়াদ শেষ হয়েছে। অনুগ্রহ করে আবার সাইন ইন করুন।",
+    symptomsKicker: "লক্ষণ",
+    symptomsHeading: "লক্ষণ লগ",
+    symptomsIntro: "আপনি কেমন অনুভব করছেন তা রেকর্ড করুন। এটি আপনার ব্যক্তিগত সচেতনতার জন্য — কোনো রোগ নির্ণয় নয়।",
+    symptomsLoading: "আপনার লক্ষণগুলো লোড হচ্ছে…",
+    symptomsLabelSymptom: "লক্ষণ",
+    symptomsPlaceholderSymptom: "যেমন: ক্র্যাম্প, মাথাব্যথা, ক্লান্তি",
+    symptomsLabelSeverity: "তীব্রতা",
+    symptomsSeverityMild: "মৃদু",
+    symptomsSeverityModerate: "মাঝারি",
+    symptomsSeveritySevere: "তীব্র",
+    symptomsLabelDateTime: "তারিখ ও সময়",
+    symptomsLabelNotes: "নোট (ঐচ্ছিক)",
+    symptomsPlaceholderNotes: "যা মনে রাখতে চান…",
+    symptomsButtonLog: "লক্ষণ লগ করুন",
+    symptomsButtonUpdate: "এন্ট্রি আপডেট করুন",
+    symptomsHistoryHeading: "আপনার লক্ষণ এন্ট্রিগুলো",
+    symptomsEmptyTitle: "এখনও কোনো লক্ষণ রেকর্ড করা হয়নি",
+    symptomsEmptyText: "আপনার চোখে পড়া যেকোনো লক্ষণ রেকর্ড করতে উপরের ফর্মটি ব্যবহার করুন।",
+    symptomsDisclaimer: "লক্ষণগুলো রেকর্ড করলে নিজের ধরন বুঝতে সুবিধা হয়। এটি কোনো চিকিৎসা রোগ নির্ণয় নয়। স্বাস্থ্য সংক্রান্ত উদ্বেগের জন্য ডাক্তারের পরামর্শ নিন।",
+    symptomsDeleteConfirm: "আপনি কি এই লক্ষণ এন্ট্রিটি মুছে ফেলতে চান?",
+    symptomsErrorLoad: "লক্ষণগুলো লোড করা যায়নি।",
+    symptomsErrorSave: "লক্ষণ এন্ট্রি সংরক্ষণ করা যায়নি।",
+    symptomsErrorDelete: "লক্ষণ এন্ট্রি মোছা যায়নি।",
+    remindersKicker: "রিমাইন্ডার",
+    remindersHeading: "ওষুধ ও পরিচর্যার রিমাইন্ডার",
+    remindersIntro: "ওষুধ, পরিপূরক বা স্বাস্থ্য পরীক্ষার জন্য রিমাইন্ডার সেট করুন।",
+    remindersLoading: "আপনার রিমাইন্ডার লোড হচ্ছে…",
+    remindersLabelTitle: "শিরোনাম",
+    remindersPlaceholderTitle: "যেমন: আয়রন ট্যাবলেট, ভিটামিন",
+    remindersLabelType: "ধরন",
+    remindersTypeMedication: "ওষুধ",
+    remindersTypePreventive: "প্রতিরোধমূলক পরিচর্যা",
+    remindersLabelFrequency: "পৌনঃপুনিকতা",
+    remindersFreqDaily: "দৈনিক",
+    remindersFreqWeekly: "সাপ্তাহিক",
+    remindersFreqMonthly: "মাসিক",
+    remindersFreqCustom: "কাস্টম",
+    remindersLabelTime: "দিনের সময় (ঐচ্ছিক)",
+    remindersLabelActive: "সক্রিয়",
+    remindersButtonAdd: "রিমাইন্ডার যোগ করুন",
+    remindersButtonUpdate: "রিমাইন্ডার আপডেট করুন",
+    remindersHistoryHeading: "সক্রিয় ও আসন্ন",
+    remindersEmptyTitle: "কোনো রিমাইন্ডার নির্ধারিত নেই",
+    remindersEmptyText: "স্বাস্থ্য রুটিন বজায় রাখতে উপরে একটি ওষুধ বা পরিচর্যার রিমাইন্ডার যোগ করুন।",
+    remindersDisclaimer: "সখী আপনার রিমাইন্ডারগুলো স্থানীয় সার্ভারে সংরক্ষণ করে। এটি কোনো নোটিফিকেশন বা এসএমএস পাঠায় না — অনুগ্রহ করে এই পেজটি দেখুন বা ফোনে অ্যালার্ম সেট করুন।",
+    remindersDeleteConfirm: "আপনি কি এই রিমাইন্ডারটি মুছে ফেলতে চান?",
+    remindersErrorLoad: "রিমাইন্ডারগুলো লোড করা যায়নি।",
+    remindersErrorSave: "রিমাইন্ডার সংরক্ষণ করা যায়নি।",
+    remindersErrorDelete: "রিমাইন্ডার মোছা যায়নি।",
+    remindersErrorUpdate: "রিমাইন্ডার আপডেট করা যায়নি।",
+    reportsKicker: "চিকিৎসা রিপোর্ট",
+    reportsHeading: "আপনার মেডিকেল রিপোর্ট",
+    reportsIntro: "আপনার মেডিকেল ডকুমেন্ট নিরাপদভাবে আপলোড, প্রদর্শন এবং ডাউনলোড করুন।",
+    reportsLoading: "আপনার রিপোর্ট লোড হচ্ছে…",
+    reportsLabelChooseFile: "ফাইল বেছে নিন",
+    reportsHint: "অনুমোদিত: PDF, PNG, JPG। সর্বোচ্চ ৫ MB। ফাইলগুলো ব্যক্তিগতভাবে সংরক্ষিত এবং শুধু আপনার জন্য প্রযোজ্য।",
+    reportsButtonUpload: "রিপোর্ট আপলোড করুন",
+    reportsButtonUploading: "আপলোড হচ্ছে…",
+    reportsHistoryHeading: "আপনার ফাইলগুলো",
+    reportsEmptyTitle: "এখনও কোনো রিপোর্ট আপলোড হয়নি",
+    reportsEmptyText: "আপলোড করা রিপোর্টগুলো ব্যক্তিগতভাবে সংরক্ষিত এবং কেবল আপনার অ্যাকাউন্টে ব্যবহারের যোগ্য। সখী ফাইলে OCR বা AI বিশ্লেষণ করে না।",
+    reportsDeleteConfirm: "আপনি কি এই রিপোর্টটি মুছে ফেলতে চান?",
+    reportsErrorLoad: "রিপোর্ট লোড করা যায়নি।",
+    reportsErrorUpload: "রিপোর্ট আপলোড করা যায়নি।",
+    reportsErrorDelete: "রিপোর্ট মোছা যায়নি।",
+    reportsErrorFileType: "ফাইলের ধরন অনুমোদিত নয়। অনুমোদিত: .pdf, .png, .jpg, .jpeg",
+    reportsErrorFileSize: "ফাইলটি খুব বড়। সর্বোচ্চ আকার ৫ MB।",
+    footerCare: "এমন যত্ন যা আপনাকে অগ্রাধিকার দেয়",
+    footerKnowledge: "প্রতিটি পর্যায়ের জন্য জ্ঞান",
+    footerLanguage: "আপনার ভাষায় স্বাস্থ্য সম্পর্কিত তথ্য",
+    footerTagline: "আপনার স্বাস্থ্য যাত্রার একজন নির্ভরযোগ্য সঙ্গী।",
+    footerCompanion: "আপনার স্বাস্থ্য যাত্রার একজন নির্ভরযোগ্য সঙ্গী।",
+    footerDisclaimer: "শুধুমাত্র শিক্ষা এবং সহায়তার জন্য। পেশাদার চিকিৎসা সেবার বিকল্প নয়।",
   },
 }
 
@@ -893,22 +1589,50 @@ function App() {
   const [expandedTopic, setExpandedTopic] = useState("");
   const activeLearnTopic = topics.find((topic) => topic.name === expandedTopic)
 
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const routes = {
+    home: '/',
+    login: '/login',
+    register: '/register',
+    tracker: '/tracker',
+    symptoms: '/symptoms',
+    reminders: '/reminders',
+    reports: '/reports',
+    learn: '/learn',
+    assistant: '/assistant',
+    finder: '/finder',
+  }
+  const knownPaths = Object.values(routes)
+  const isNotFound = !knownPaths.includes(location.pathname)
+
+  const goTo = (section) => {
+    navigate(routes[section] || '/')
+  }
+
   // Authentication state
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(() => localStorage.getItem('sakhi_token'))
-  const [authPage, setAuthPage] = useState(null)
+  const [_authPage, setAuthPage] = useState(null)
   const [authLoading, setAuthLoading] = useState(true)
 
   const handleLogin = (data) => {
     setUser({ email: data.email })
     setToken(data.token)
     setAuthPage(null)
+    if (location.pathname === '/login' || location.pathname === '/register') {
+      goTo('home')
+    }
   }
 
   const handleRegister = (data) => {
     setUser({ email: data.email })
     setToken(data.token)
     setAuthPage(null)
+    if (location.pathname === '/login' || location.pathname === '/register') {
+      goTo('home')
+    }
   }
 
   const handleLogout = () => {
@@ -918,6 +1642,7 @@ function App() {
     setUser(null)
     setToken(null)
     setAuthPage('login')
+    goTo('home')
   }
 
   const loadUser = async () => {
@@ -946,9 +1671,6 @@ function App() {
 
   const isAuthenticated = !!token && !!user
 
-  const navigate = useNavigate()
-  const location = useLocation()
-
   // Chat is now backed by the FastAPI /api/chat endpoint (see hooks/useChat.js).
   // If the API is unreachable we fall back to the original canned replies below.
   const offlineReply = useCallback((text) => {
@@ -959,25 +1681,6 @@ function App() {
   const sendChatMessage = chat.send
   const renderChatText = (message) =>
     message.replyKey ? getReplyText(message.replyKey, language) || message.text : message.text
-
-  const routes = {
-    home: '/',
-    login: '/login',
-    register: '/register',
-    tracker: '/tracker',
-    symptoms: '/symptoms',
-    reminders: '/reminders',
-    reports: '/reports',
-    learn: '/learn',
-    assistant: '/assistant',
-    finder: '/finder',
-  }
-  const knownPaths = Object.values(routes)
-  const isNotFound = !knownPaths.includes(location.pathname)
-
-  const goTo = (section) => {
-    navigate(routes[section] || '/')
-  }
   const askAssistant = (event) => {
     event.preventDefault()
     const userQuestion = question.trim()
@@ -1051,24 +1754,24 @@ function App() {
                   className="nav-link"
                   onClick={handleLogout}
                 >
-                  Sign out
+                  {t.signOut || 'Sign out'}
                 </button>
               </>
             ) : (
               <>
                 <button
                   type="button"
-                  className="nav-link"
+                  className={`nav-link ${location.pathname === '/login' ? 'active' : ''}`}
                   onClick={() => { setAuthPage('login'); goTo('login') }}
                 >
-                  Sign in
+                  {t.signIn || 'Sign in'}
                 </button>
                 <button
                   type="button"
-                  className="nav-link"
+                  className={`nav-link ${location.pathname === '/register' ? 'active' : ''}`}
                   onClick={() => { setAuthPage('register'); goTo('register') }}
                 >
-                  Create account
+                  {t.createAccount || 'Create account'}
                 </button>
               </>
             )}
@@ -1077,105 +1780,171 @@ function App() {
       </header>
 
       <main>
-      {authLoading ? (
-        <div className="auth-page" style={{ padding: '40px', textAlign: 'center' }}>
-          Loading session…
-        </div>
-      ) : !isAuthenticated && (location.pathname === '/login' || location.pathname === '/register') ? (
-        <div className="auth-page">
-          {authPage === 'register' ? (
-            <Register onRegister={handleRegister} onSwitchToLogin={() => setAuthPage('login')} />
+        {location.pathname === '/login' && (
+          <Login
+            t={t}
+            onLogin={handleLogin}
+            onSwitchToRegister={() => {
+              setAuthPage('register')
+              goTo('register')
+            }}
+          />
+        )}
+
+        {location.pathname === '/register' && (
+          <Register
+            t={t}
+            onRegister={handleRegister}
+            onSwitchToLogin={() => {
+              setAuthPage('login')
+              goTo('login')
+            }}
+          />
+        )}
+
+        {location.pathname === '/' && (
+          <>
+            <section className="hero" id="home">
+              <div className="hero-copy">
+                <div className="eyebrow">
+                  <span className="eyebrow-dot" />
+                  YOUR HEALTH, YOUR PRIORITY
+                </div>
+
+                <h1>
+                  {t.heroTitle}
+                </h1>
+
+                <p className="hero-description">
+                  {t.heroSubtitle}
+                </p>
+
+                <div className="hero-actions">
+                  <button className="button-primary" onClick={() => goTo('tracker')}>
+                    {t.heroPrimaryButton} <span>↗</span>
+                  </button>
+                  <button className="button-secondary" onClick={() => goTo('learn')}>
+                    {t.heroSecondaryButton}
+                  </button>
+                </div>
+
+                <div className="trust-note">
+                  <span className="trust-icon">♡</span>
+                  {t.heroTrustTagline || t.heroTrustNote || t.heroTagline}
+                </div>
+              </div>
+
+              <div className="hero-art" aria-label="Illustration of a woman surrounded by flowers">
+                <div className="art-orbit orbit-one" />
+                <div className="art-orbit orbit-two" />
+                <div className="sun-shape" />
+                <div className="flower flower-one">✿</div>
+                <div className="flower flower-two">✿</div>
+                <div className="flower flower-three">✽</div>
+                <div className="hero-illustration">
+                  <div className="hair" />
+                  <div className="face">
+                    <span className="eye eye-left" />
+                    <span className="eye eye-right" />
+                    <span className="nose" />
+                    <span className="mouth" />
+                    <span className="cheek cheek-left" />
+                    <span className="cheek cheek-right" />
+                  </div>
+                  <div className="neck" />
+                  <div className="body-shape">
+                    <span className="dress-fold" />
+                  </div>
+                  <div className="arm arm-left" />
+                  <div className="arm arm-right" />
+                </div>
+                <div className="art-caption">
+                  <span>✦</span>
+                  Make time for you
+                </div>
+              </div>
+            </section>
+
+            <section className="welcome-strip" aria-label="Our promise">
+              <div><span>♡</span><p>{t.footerCare}</p></div>
+              <div><span>✿</span><p>{t.footerKnowledge}</p></div>
+              <div><span>⌁</span><p>{t.footerLanguage}</p></div>
+            </section>
+
+            <section className="assistant-section" id="assistant-cta">
+              <div className="assistant-decoration">✳</div>
+              <div className="assistant-copy">
+                <span className="section-kicker">{t.homeAssistantKicker}</span>
+                <h2>{t.homeAssistantHeading}</h2>
+                <p>
+                  {t.homeAssistantIntro}
+                </p>
+              </div>
+              <form className="assistant-form" onSubmit={askAssistant}>
+                <label htmlFor="health-question">{t.homeAssistantInputLabel}</label>
+                <div className="question-input">
+                  <input
+                    id="health-question"
+                    value={question}
+                    onChange={(event) => setQuestion(event.target.value)}
+                    placeholder={t.assistantInputPlaceholder}
+                  />
+                  <button type="submit" aria-label={t.assistantSend}>→</button>
+                </div>
+                <span className="privacy-note">{t.homeAssistantPrivacy}</span>
+              </form>
+            </section>
+          </>
+        )}
+
+        {['/tracker', '/symptoms', '/reminders', '/reports'].includes(location.pathname) && (
+          authLoading ? (
+            <div className="auth-page">
+              <div className="auth-card auth-prompt-card">
+                <p>{t.authLoadingSession || 'Loading session…'}</p>
+              </div>
+            </div>
+          ) : !isAuthenticated ? (
+            <div className="auth-page">
+              <div className="auth-card auth-prompt-card">
+                <div className="auth-brand-badge" aria-hidden="true">
+                  <span className="brand-mark">s</span>
+                </div>
+                <h2>{t.authRequiredTitle || 'Sign in required'}</h2>
+                <p>{t.authRequiredText || 'Please sign in or create an account to access your private health records.'}</p>
+                <div className="auth-prompt-actions">
+                  <button
+                    type="button"
+                    className="button-primary"
+                    onClick={() => {
+                      setAuthPage('login')
+                      goTo('login')
+                    }}
+                  >
+                    {t.authSignInBtn || 'Sign in ↗'}
+                  </button>
+                  <button
+                    type="button"
+                    className="button-secondary"
+                    onClick={() => {
+                      setAuthPage('register')
+                      goTo('register')
+                    }}
+                  >
+                    {t.createAccount || 'Create account'}
+                  </button>
+                </div>
+              </div>
+            </div>
           ) : (
-            <Login onLogin={handleLogin} onSwitchToRegister={() => setAuthPage('register')} />
-          )}
-        </div>
-      ) : !isAuthenticated ? (
-        <div className="auth-page" style={{ padding: '40px', textAlign: 'center' }}>
-          <p>Please sign in to continue.</p>
-          <button
-            type="button"
-            className="button-primary"
-            onClick={() => { setAuthPage('login'); goTo('login') }}
-          >
-            Sign in
-          </button>
-        </div>
-      ) : (
-  <>
-        <section className="hero" id="home">
-          <div className="hero-copy">
-            <div className="eyebrow">
-              <span className="eyebrow-dot" />
-              YOUR HEALTH, YOUR PRIORITY
-            </div>
-
-            <h1>
-              {t.heroTitle}
-            </h1>
-
-            <p className="hero-description">
-              {t.heroSubtitle}
-            </p>
-
-            <div className="hero-actions">
-              <button className="button-primary" onClick={() => goTo('tracker')}>
-                {t.heroPrimaryButton} <span>↗</span>
-              </button>
-              <button className="button-secondary" onClick={() => goTo('learn')}>
-                {t.heroSecondaryButton}
-              </button>
-            </div>
-
-            <div className="trust-note">
-              <span className="trust-icon">♡</span>
-              A supportive space, made with women in mind.
-            </div>
-          </div>
-
-          <div className="hero-art" aria-label="Illustration of a woman surrounded by flowers">
-            <div className="art-orbit orbit-one" />
-            <div className="art-orbit orbit-two" />
-            <div className="sun-shape" />
-            <div className="flower flower-one">✿</div>
-            <div className="flower flower-two">✿</div>
-            <div className="flower flower-three">✽</div>
-            <div className="hero-illustration">
-              <div className="hair" />
-              <div className="face">
-                <span className="eye eye-left" />
-                <span className="eye eye-right" />
-                <span className="nose" />
-                <span className="mouth" />
-                <span className="cheek cheek-left" />
-                <span className="cheek cheek-right" />
-              </div>
-              <div className="neck" />
-              <div className="body-shape">
-                <span className="dress-fold" />
-              </div>
-              <div className="arm arm-left" />
-              <div className="arm arm-right" />
-            </div>
-            <div className="art-caption">
-              <span>✦</span>
-              Make time for you
-            </div>
-          </div>
-        </section>
-
-        <section className="welcome-strip" aria-label="Our promise">
-          <div><span>♡</span><p>Care that puts <strong>you first</strong></p></div>
-          <div><span>✿</span><p>Knowledge for <strong>every stage</strong></p></div>
-          <div><span>⌁</span><p>Health information in <strong>your language</strong></p></div>
-        </section>
-        </>
-      )}
-
-  {location.pathname === '/tracker' && <HealthTracker t={t} />}
-
-  {location.pathname === '/symptoms' && <Symptoms t={t} />}
-  {location.pathname === '/reminders' && <Reminders t={t} />}
-  {location.pathname === '/reports' && <Reports t={t} />}
+            <>
+              {location.pathname === '/tracker' && <HealthTracker t={t} />}
+              {location.pathname === '/symptoms' && <Symptoms t={t} />}
+              {location.pathname === '/reminders' && <Reminders t={t} />}
+              {location.pathname === '/reports' && <Reports t={t} />}
+            </>
+          )
+        )}
   {location.pathname === '/learn' && (
   <>
 <section className="section learn-section" id="learn">
@@ -1353,35 +2122,7 @@ function App() {
   </>
 )}
 
-{location.pathname === '/' && (
-  <>
-       <section className="assistant-section" id="assistant-cta">
-          <div className="assistant-decoration">✳</div>
-          <div className="assistant-copy">
-            <span className="section-kicker">{t.homeAssistantKicker}</span>
-            <h2>{t.homeAssistantHeading}</h2>
-            <p>
-              {t.homeAssistantIntro}
-            </p>
-          </div>
-          <form className="assistant-form" onSubmit={askAssistant}>
-            <label htmlFor="health-question">{t.homeAssistantInputLabel}</label>
-            <div className="question-input">
-              <input
-                id="health-question"
-                value={question}
-                onChange={(event) => setQuestion(event.target.value)}
-                placeholder={t.assistantInputPlaceholder}
-              />
-              <button type="submit" aria-label={t.assistantSend}>→</button>
-            </div>
-            <span className="privacy-note">{t.homeAssistantPrivacy}</span>
-          </form>
-        </section>
-        </>
-)}
-
-        {location.pathname === '/finder' && <HealthcareFinder language={language} />}
+{location.pathname === '/finder' && <HealthcareFinder language={language} />}
 
         {isNotFound && (
           <section className="section not-found-section" aria-label="Page not found">
@@ -1404,7 +2145,6 @@ function App() {
             </button>
           </section>
         )}
-      )
       </main>
 
       <footer className="footer" id="care">
@@ -1419,9 +2159,9 @@ function App() {
           <span className="brand-mark">s</span>
           <span>sakhi<span className="brand-accent">.</span></span>
         </a>
-        <p>A companion for your health journey.</p>
+        <p>{t.footerTagline}</p>
         <span className="footer-disclaimer">
-          For education and support only. Not a substitute for professional medical care.
+          {t.footerDisclaimer}
         </span>
       </footer>
     </div>

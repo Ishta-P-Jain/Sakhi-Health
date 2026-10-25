@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { login, setAuthToken } from '../services/api'
 
-export default function Login({ onLogin, onSwitchToRegister }) {
+export default function Login({ t, onLogin, onSwitchToRegister }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
+  const [errorCode, setErrorCode] = useState(null)
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    setError('')
+    setErrorCode(null)
     setLoading(true)
     try {
       const data = await login({ email, password })
@@ -18,52 +18,70 @@ export default function Login({ onLogin, onSwitchToRegister }) {
       localStorage.setItem('sakhi_user_email', email)
       onLogin({ email, token: data.access_token })
     } catch (err) {
-      setError(err.status === 401 ? 'Invalid email or password.' : 'Unable to sign in. Please try again.')
+      setErrorCode(err.status === 401 ? 'invalid_credentials' : 'generic')
     } finally {
       setLoading(false)
     }
   }
 
+  const errorMessage = errorCode === 'invalid_credentials'
+    ? (t?.authErrorInvalidCredentials || 'Invalid email or password.')
+    : errorCode === 'generic'
+      ? (t?.authErrorGeneric || 'Unable to sign in. Please try again.')
+      : null
+
   return (
     <div className="auth-page">
       <div className="auth-card">
-        <div className="auth-header">
-          <h2>Sign in to Sakhi</h2>
-          <p>Welcome back. Enter your email and password to access your health records.</p>
+        <div className="auth-brand-badge" aria-hidden="true">
+          <span className="brand-mark">s</span>
         </div>
+        <div className="auth-header">
+          <h2>{t?.authSignInTitle || 'Sign in to Sakhi'}</h2>
+          <p>{t?.authSignInSubtitle || 'Welcome back. Enter your email and password to access your health records.'}</p>
+        </div>
+
+        {errorMessage && (
+          <div className="auth-error-alert" role="alert" aria-live="assertive">
+            <span className="auth-error-icon" aria-hidden="true">⚠</span>
+            <span>{errorMessage}</span>
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} noValidate>
           <div className="field">
-            <label>Email</label>
+            <label htmlFor="login-email">{t?.authEmail || 'Email'}</label>
             <input
+              id="login-email"
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
+              placeholder={t?.authEmailPlaceholder || 'you@example.com'}
               autoComplete="email"
             />
           </div>
           <div className="field">
-            <label>Password</label>
+            <label htmlFor="login-password">{t?.authPassword || 'Password'}</label>
             <input
+              id="login-password"
               type="password"
               required
               minLength={6}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
+              placeholder={t?.authPasswordPlaceholder || '••••••••'}
               autoComplete="current-password"
             />
           </div>
-          {error && <p className="error">{error}</p>}
-          <button type="submit" className="button-primary" disabled={loading}>
-            {loading ? 'Signing in…' : 'Sign in'}
+          <button type="submit" className="button-primary auth-submit-btn" disabled={loading}>
+            {loading ? (t?.authSigningIn || 'Signing in…') : (t?.authSignInBtn || 'Sign in ↗')}
           </button>
         </form>
         <p className="auth-footer">
-          Don't have an account?{' '}
-          <button type="button" className="link" onClick={onSwitchToRegister}>
-            Create account
+          {t?.authNoAccount || "Don't have an account?"}{' '}
+          <button type="button" className="auth-link-btn" onClick={onSwitchToRegister}>
+            {t?.createAccount || 'Create account'}
           </button>
         </p>
       </div>

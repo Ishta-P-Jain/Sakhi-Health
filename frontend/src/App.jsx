@@ -1,11 +1,18 @@
 
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import './App.css'
 import { useNavigate, useLocation } from 'react-router-dom'
 import ChatPanel from './features/chatbot/ChatPanel.jsx'
 import HealthcareFinder from './features/healthcare/HealthcareFinder.jsx'
 import { finderNavLabel } from './features/healthcare/strings.js'
 import { useChat } from './hooks/useChat.js'
+import { fetchMe, setAuthToken, clearAuthToken, setOnUnauthenticated } from './services/api.js'
+import Login from './components/Login.jsx'
+import Register from './components/Register.jsx'
+import HealthTracker from './features/health/HealthTracker.jsx'
+import Symptoms from './features/symptoms/Symptoms.jsx'
+import Reminders from './features/reminders/Reminders.jsx'
+import Reports from './features/reports/Reports.jsx'
 
 const translations = {
   English: {
@@ -885,26 +892,61 @@ function App() {
   const [selectedTopic, setSelectedTopic] = useState("All");
   const [expandedTopic, setExpandedTopic] = useState("");
   const activeLearnTopic = topics.find((topic) => topic.name === expandedTopic)
+
+  // Authentication state
+  const [user, setUser] = useState(null)
+  const [token, setToken] = useState(() => localStorage.getItem('sakhi_token'))
+  const [authPage, setAuthPage] = useState(null)
+  const [authLoading, setAuthLoading] = useState(true)
+
+  const handleLogin = (data) => {
+    setUser({ email: data.email })
+    setToken(data.token)
+    setAuthPage(null)
+  }
+
+  const handleRegister = (data) => {
+    setUser({ email: data.email })
+    setToken(data.token)
+    setAuthPage(null)
+  }
+
+  const handleLogout = () => {
+    clearAuthToken()
+    localStorage.removeItem('sakhi_token')
+    localStorage.removeItem('sakhi_user_email')
+    setUser(null)
+    setToken(null)
+    setAuthPage('login')
+  }
+
+  const loadUser = async () => {
+    const savedToken = localStorage.getItem('sakhi_token')
+    if (savedToken) {
+      setAuthToken(savedToken)
+      setToken(savedToken)
+      try {
+        const userData = await fetchMe()
+        setUser(userData)
+      } catch {
+        clearAuthToken()
+        localStorage.removeItem('sakhi_token')
+        setToken(null)
+      }
+    }
+    setAuthLoading(false)
+  }
+
+  useEffect(() => {
+    loadUser()
+    setOnUnauthenticated(() => {
+      handleLogout()
+    })
+  }, [])
+
+  const isAuthenticated = !!token && !!user
 const navigate = useNavigate()
 const location = useLocation()
-const [periodDays, setPeriodDays] = useState([]);
-const [wellnessMood, setWellnessMood] = useState("Okay");
-const [wellnessSymptoms, setWellnessSymptoms] = useState([]);
-const [wellnessNotes, setWellnessNotes] = useState("");
-
-const [wellnessDate, setWellnessDate] = useState(
-  new Date().toLocaleDateString("en-CA")
-);
-
-// Chat is now backed by the FastAPI /api/chat endpoint (see hooks/useChat.js).
-// If the API is unreachable we fall back to the original canned replies below.
-const offlineReply = useCallback((text) => {
-  const replyKey = determineReplyKey(text)
-  return { replyKey, text: getReplyText(replyKey, language) }
-}, [language])
-const chat = useChat({ language, offlineReply })
-const sendChatMessage = chat.send
-const renderChatText = (message) =>
   message.replyKey ? getReplyText(message.replyKey, language) || message.text : message.text
 
   const routes = {

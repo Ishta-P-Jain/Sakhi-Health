@@ -23,8 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-backend/.env.example
-
 # Secrets & env
 .env
 .env.*

@@ -36,3 +36,8 @@ __pycache__/
 .venv/
 venv/
 .pytest_cache/
+
+# Backend dev artifacts
+backend/sakhi.db
+backend/uploads/
+backend/.env

@@ -51,7 +51,18 @@ export async function request(path, { method = 'GET', body, timeoutMs = 30000 } 
       }
       throw new ApiError(res.status, typeof detail === 'string' ? detail : '')
     }
-    return await res.json()
+    if (res.status === 204) {
+      return null
+    }
+    const text = await res.text()
+    if (!text) {
+      return null
+    }
+    try {
+      return JSON.parse(text)
+    } catch {
+      return text
+    }
   } finally {
     clearTimeout(timer)
   }

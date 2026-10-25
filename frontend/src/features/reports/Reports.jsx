@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   deleteReport,
-  downloadReport,
   fetchReports,
   uploadReport,
 } from '../../services/api'
@@ -12,18 +11,21 @@ const ALLOWED_EXTENSIONS = ['.pdf', '.png', '.jpg', '.jpeg']
 export default function Reports({ t }) {
   const [reports, setReports] = useState([])
   const [file, setFile] = useState(null)
-  const [error, setError] = useState('')
+  const [errorCode, setErrorCode] = useState(null)
+  const [customError, setCustomError] = useState('')
   const [loading, setLoading] = useState(false)
   const [uploading, setUploading] = useState(false)
+  const fileInputRef = useRef(null)
 
   const load = useCallback(async () => {
     setLoading(true)
-    setError('')
+    setErrorCode(null)
+    setCustomError('')
     try {
       const data = await fetchReports({ limit: 100 })
       setReports(data)
     } catch (err) {
-      setError(err.status === 401 ? 'Session expired. Please sign in again.' : 'Unable to load reports.')
+      setErrorCode(err.status === 401 ? 'session_expired' : 'load_failed')
     } finally {
       setLoading(false)
     }
@@ -34,52 +36,68 @@ export default function Reports({ t }) {
   }, [load])
 
   const handleFileChange = (event) => {
-    const selected = event.target.files[0]
-    setError('')
+    const selected = event.target.files?.[0]
+    setErrorCode(null)
+    setCustomError('')
     if (!selected) {
       setFile(null)
       return
     }
     const ext = selected.name.slice(selected.name.lastIndexOf('.')).toLowerCase()
     if (!ALLOWED_EXTENSIONS.includes(ext)) {
-      setError(`File type not allowed. Allowed: ${ALLOWED_EXTENSIONS.join(', ')}`)
+      setErrorCode('file_type')
       setFile(null)
-      event.target.value = ''
+      if (fileInputRef.current) fileInputRef.current.value = ''
       return
     }
     if (selected.size > MAX_MB * 1024 * 1024) {
-      setError(`File too large. Maximum size is ${MAX_MB} MB.`)
+      setErrorCode('file_size')
       setFile(null)
-      event.target.value = ''
+      if (fileInputRef.current) fileInputRef.current.value = ''
       return
     }
     setFile(selected)
   }
 
+  const handleRemoveSelectedFile = () => {
+    setFile(null)
+    setErrorCode(null)
+    setCustomError('')
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
+  }
+
   const handleUpload = async (event) => {
     event.preventDefault()
     if (!file) return
-    setError('')
+    setErrorCode(null)
+    setCustomError('')
     setUploading(true)
     try {
       await uploadReport(file)
-      setFile(null)
-      event.target.value = ''
+      handleRemoveSelectedFile()
       load()
     } catch (err) {
-      setError(err.status === 400 ? err.detail : 'Unable to upload report.')
+      if (err.status === 400 && err.detail) {
+        setCustomError(err.detail)
+      } else {
+        setErrorCode('upload_failed')
+      }
     } finally {
       setUploading(false)
     }
   }
 
   const handleDelete = async (id) => {
-    if (!window.confirm('Delete this report?')) return
+    const confirmMsg = t?.reportsDeleteConfirm || 'Delete this report?'
+    if (!window.confirm(confirmMsg)) return
+    setErrorCode(null)
     try {
       await deleteReport(id)
       load()
-    } catch (err) {
-      setError('Unable to delete report.')
+    } catch {
+      setErrorCode('delete_failed')
     }
   }
 
@@ -96,69 +114,118 @@ export default function Reports({ t }) {
     document.body.removeChild(link)
   }
 
+  const errorMessage = customError || (
+    errorCode === 'session_expired'
+      ? (t?.sessionExpired || 'Session expired. Please sign in again.')
+      : errorCode === 'load_failed'
+        ? (t?.reportsErrorLoad || 'Unable to load reports.')
+        : errorCode === 'upload_failed'
+          ? (t?.reportsErrorUpload || 'Unable to upload report.')
+          : errorCode === 'delete_failed'
+            ? (t?.reportsErrorDelete || 'Unable to delete report.')
+            : errorCode === 'file_type'
+              ? (t?.reportsErrorFileType || 'File type not allowed. Allowed: .pdf, .png, .jpg, .jpeg')
+              : errorCode === 'file_size'
+                ? (t?.reportsErrorFileSize || 'File too large. Maximum size is 5 MB.')
+                : null
+  )
+
   if (loading) {
-    return <div className="reports-page">Loading your reports…</div>
+    return (
+      <div className="reports-page">
+        <section className="section">
+          <div className="section-heading">
+            <div>
+              <span className="section-kicker">{t?.reportsKicker || 'Medical reports'}</span>
+              <h2>{t?.reportsHeading || 'Your medical reports'}</h2>
+            </div>
+            <span className="heading-flower">✿</span>
+          </div>
+          <div className="loading-state">
+            <p>{t?.reportsLoading || 'Loading your reports…'}</p>
+          </div>
+        </section>
+      </div>
+    )
   }
 
   return (
     <div className="reports-page">
       <section className="section">
         <div className="section-heading">
-          <span className="section-kicker">Medical reports</span>
-          <h2>Your medical reports</h2>
-          <p>Upload, view, and download your medical documents securely.</p>
+          <div>
+            <span className="section-kicker">{t?.reportsKicker || 'Medical reports'}</span>
+            <h2>{t?.reportsHeading || 'Your medical reports'}</h2>
+            <p>{t?.reportsIntro || 'Upload, view, and download your medical documents securely.'}</p>
+          </div>
           <span className="heading-flower">✿</span>
         </div>
 
         <form onSubmit={handleUpload} className="upload-form">
           <div className="field">
-            <label>Choose file</label>
+            <label htmlFor="report-file-input">{t?.reportsLabelChooseFile || 'Choose file'}</label>
             <input
+              id="report-file-input"
+              ref={fileInputRef}
               type="file"
               accept=".pdf,.png,.jpg,.jpeg"
               onChange={handleFileChange}
               className="file-input"
             />
             <small className="hint">
-              Allowed: PDF, PNG, JPG. Max {MAX_MB} MB. Files are stored privately
-              and are only accessible to you.
+              {t?.reportsHint ||
+                'Allowed: PDF, PNG, JPG. Max 5 MB. Files are stored privately and are only accessible to you.'}
             </small>
           </div>
+
           {file && (
-            <div className="file-selected">
-              {file.name} ({Math.round(file.size / 1024)} KB)
+            <div className="file-selected" aria-live="polite">
+              <span className="file-selected-name">
+                📄 {file.name} <strong>({Math.round(file.size / 1024)} KB)</strong>
+              </span>
               <button
                 type="button"
-                className="button-link"
-                onClick={() => {
-                  setFile(null)
-                  event && event.target && (event.target.value = '')
-                }}
+                className="button-link button-delete"
+                onClick={handleRemoveSelectedFile}
+                aria-label={t?.actionRemove || 'Remove'}
               >
-                Remove
+                {t?.actionRemove || 'Remove'}
               </button>
             </div>
           )}
-          {error && <p className="error">{error}</p>}
-          <button type="submit" className="button-primary" disabled={!file || uploading}>
-            {uploading ? 'Uploading…' : 'Upload report'}
-          </button>
+
+          {errorMessage && (
+            <div className="error" role="alert" aria-live="assertive">
+              <span>{errorMessage}</span>
+            </div>
+          )}
+
+          <div className="form-actions">
+            <button type="submit" className="button-primary" disabled={!file || uploading}>
+              {uploading
+                ? (t?.reportsButtonUploading || t?.actionUploading || 'Uploading…')
+                : (t?.reportsButtonUpload || 'Upload report')}
+            </button>
+          </div>
         </form>
       </section>
 
-      {reports.length > 0 && (
+      {reports.length > 0 ? (
         <section className="section">
           <div className="section-heading">
-            <span className="section-kicker">Uploaded reports</span>
-            <h2>Your files</h2>
+            <div>
+              <span className="section-kicker">{t?.reportsKicker || 'Medical reports'}</span>
+              <h2>{t?.reportsHistoryHeading || 'Your files'}</h2>
+            </div>
             <span className="heading-flower">✿</span>
           </div>
-          <ul className="report-list">
+
+          <ul className="report-list" aria-label={t?.reportsHistoryHeading || 'Your files'}>
             {reports.map((r) => (
               <li key={r.id} className="report-item">
                 <div className="report-info">
-                  <span className="report-name">{r.original_filename}</span>
-                  <span className="report-type">{r.file_type}</span>
+                  <strong className="report-name">📄 {r.original_filename}</strong>
+                  <span className="badge badge-frequency">{r.file_type}</span>
                   <span className="report-size">{(r.file_size / 1024).toFixed(1)} KB</span>
                   <span className="report-date">{new Date(r.uploaded_at).toLocaleDateString()}</span>
                 </div>
@@ -167,29 +234,30 @@ export default function Reports({ t }) {
                     type="button"
                     className="button-link"
                     onClick={() => handleDownload(r.id)}
+                    aria-label={`${t?.actionDownload || 'Download'} ${r.original_filename}`}
                   >
-                    Download
+                    {t?.actionDownload || 'Download'}
                   </button>
                   <button
                     type="button"
                     className="button-link button-delete"
                     onClick={() => handleDelete(r.id)}
+                    aria-label={`${t?.actionDelete || 'Delete'} ${r.original_filename}`}
                   >
-                    Delete
+                    {t?.actionDelete || 'Delete'}
                   </button>
                 </div>
               </li>
             ))}
           </ul>
         </section>
-      )}
-
-      {reports.length === 0 && !loading && (
+      ) : (
         <div className="empty-state">
-          <p>No reports uploaded yet.</p>
-          <p className="content-note">
-            Uploaded reports are stored privately and are only accessible to your
-            account. Sakhi does not perform OCR or AI analysis on your files.
+          <span className="empty-state-icon" aria-hidden="true">✿</span>
+          <h3>{t?.reportsEmptyTitle || 'No reports uploaded yet'}</h3>
+          <p>
+            {t?.reportsEmptyText ||
+              'Uploaded reports are stored privately and are only accessible to your account. Sakhi does not perform OCR or AI analysis on your files.'}
           </p>
         </div>
       )}

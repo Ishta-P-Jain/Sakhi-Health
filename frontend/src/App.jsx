@@ -24,6 +24,9 @@ const translations = {
     heroSubtitle: "Your health matters, every single day. Find trusted health education, understand your wellbeing and take your next step with confidence.",
     heroPrimaryButton: "Explore your health",
     heroSecondaryButton: "Discover & learn",
+    heroTrustTagline: "A supportive space, made with women in mind.",
+    heroTagline: "A supportive space, made with women in mind.",
+    heroTrustNote: "A supportive space, made with women in mind.",
     trackerKicker: "A LITTLE CHECK-IN WITH YOURSELF",
     trackerHeading: "Your health, your way",
     trackerIntro: "Keep a private record of how you're feeling, one day at a time.",
@@ -241,6 +244,12 @@ const translations = {
     reportsErrorDelete: "Unable to delete report.",
     reportsErrorFileType: "File type not allowed. Allowed: .pdf, .png, .jpg, .jpeg",
     reportsErrorFileSize: "File too large. Maximum size is 5 MB.",
+    footerCare: "Care that puts you first",
+    footerKnowledge: "Knowledge for every stage",
+    footerLanguage: "Health information in your language",
+    footerTagline: "A companion for your health journey.",
+    footerCompanion: "A companion for your health journey.",
+    footerDisclaimer: "For education and support only. Not a substitute for professional medical care.",
   },
   हिन्दी: {
     home: "होम",
@@ -251,6 +260,9 @@ const translations = {
     heroSubtitle: "आपका स्वास्थ्य हर दिन महत्वपूर्ण है। विश्वसनीय स्वास्थ्य शिक्षा पाएँ, अपनी सेहत को समझें और आत्मविश्वास के साथ अगला कदम बढ़ाएँ।",
     heroPrimaryButton: "अपनी सेहत जानें",
     heroSecondaryButton: "जानें और सीखें",
+    heroTrustTagline: "एक सुरक्षित और सहयोगी मंच, विशेष रूप से महिलाओं के लिए।",
+    heroTagline: "एक सुरक्षित और सहयोगी मंच, विशेष रूप से महिलाओं के लिए।",
+    heroTrustNote: "एक सुरक्षित और सहयोगी मंच, विशेष रूप से महिलाओं के लिए।",
     trackerKicker: "अपने साथ एक छोटी सी जाँच",
     trackerHeading: "आपका स्वास्थ्य, आपका तरीका",
     trackerIntro: "हर दिन, यह निजी रिकॉर्ड रखें कि आप कैसा महसूस कर रही हैं।",
@@ -468,6 +480,12 @@ const translations = {
     reportsErrorDelete: "रिपोर्ट हटाने में असमर्थ।",
     reportsErrorFileType: "फ़ाइल प्रकार की अनुमति नहीं है। अनुमत: .pdf, .png, .jpg, .jpeg",
     reportsErrorFileSize: "फ़ाइल बहुत बड़ी है। अधिकतम आकार 5 MB है।",
+    footerCare: "ऐसी देखभाल जो आपको प्राथमिकता दे",
+    footerKnowledge: "हर चरण के लिए ज्ञान",
+    footerLanguage: "आपकी अपनी भाषा में स्वास्थ्य जानकारी",
+    footerTagline: "आपकी स्वास्थ्य यात्रा का एक सच्चा साथी।",
+    footerCompanion: "आपकी स्वास्थ्य यात्रा का एक सच्चा साथी।",
+    footerDisclaimer: "केवल शिक्षा और सहयोग के लिए। पेशेवर चिकित्सा सलाह का विकल्प नहीं।",
   },
   ಕನ್ನಡ: {
     home: "ಮುಖಪುಟ",
@@ -478,6 +496,9 @@ const translations = {
     heroSubtitle: "ನಿಮ್ಮ ಆರೋಗ್ಯ ಪ್ರತಿ ದಿನ ಮುಖ್ಯ. ನಂಬಲರ್ಹ ಆರೋಗ್ಯ ಶಿಕ್ಷಣವನ್ನು ಪಡೆಯಿರಿ, ನಿಮ್ಮ ಯೋಗಕ್ಷೇಮವನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ ಮತ್ತು ಆತ್ಮವಿಶ್ವಾಸದಿಂದ ಮುಂದಿನ ಹೆಜ್ಜೆ ಇಡಿ.",
     heroPrimaryButton: "ನಿಮ್ಮ ಆರೋಗ್ಯವನ್ನು ಅನ್ವೇಷಿಸಿ",
     heroSecondaryButton: "ಅನ್ವೇಷಿಸಿ ಮತ್ತು ತಿಳಿಯಿರಿ",
+    heroTrustTagline: "ಮಹಿಳೆಯರ ಯೋಗಕ್ಷೇಮಕ್ಕಾಗಿ ರೂಪಿಸಲಾದ, ಕಾಳಜಿ ಮತ್ತು ಬೆಂಬಲದ ವೇದಿಕೆ.",
+    heroTagline: "ಮಹಿಳೆಯರ ಯೋಗಕ್ಷೇಮಕ್ಕಾಗಿ ರೂಪಿಸಲಾದ, ಕಾಳಜಿ ಮತ್ತು ಬೆಂಬಲದ ವೇದಿಕೆ.",
+    heroTrustNote: "ಮಹಿಳೆಯರ ಯೋಗಕ್ಷೇಮಕ್ಕಾಗಿ ರೂಪಿಸಲಾದ, ಕಾಳಜಿ ಮತ್ತು ಬೆಂಬಲದ ವೇದಿಕೆ.",
     trackerKicker: "ನಿಮ್ಮೊಂದಿಗೆ ಒಂದು ಸಣ್ಣ ಚೆಕ್-ಇನ್",
     trackerHeading: "ನಿಮ್ಮ ಆರೋಗ್ಯ, ನಿಮ್ಮ ಆಯ್ಕೆ",
     trackerIntro: "ನೀವು ಹೇಗೆ ಅನುಭವಿಸುತ್ತಿದ್ದೀರಿ ಎಂಬುದರ ಖಾಸಗಿ ದಾಖಲೆಯನ್ನು, ಒಂದು ದಿನದಿಂದ ಒಂದು ದಿನಕ್ಕೆ ಇರಿಸಿಕೊಳ್ಳಿ.",
@@ -695,6 +716,12 @@ const translations = {
     reportsErrorDelete: "ವರದಿ ಅಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
     reportsErrorFileType: "ಫೈಲ್ ಪ್ರಕಾರಕ್ಕೆ ಅನುಮತಿಯಿಲ್ಲ. ಅನುಮತಿಸಿದ ವಿಧಗಳು: .pdf, .png, .jpg, .jpeg",
     reportsErrorFileSize: "ಫೈಲ್ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ. ಗರಿಷ್ಠ ಮಿತಿ 5 MB ಆಗಿದೆ.",
+    footerCare: "ನಿಮಗೆ ಮೊದಲ ಆದ್ಯತೆ ನೀಡುವ ಆರೈಕೆ",
+    footerKnowledge: "ಪ್ರತಿಯೊಂದು ಹಂತಕ್ಕೂ ಜ್ಞಾನ",
+    footerLanguage: "ನಿಮ್ಮದೇ ಭಾಷೆಯಲ್ಲಿ ಆರೋಗ್ಯ ಮಾಹಿತಿ",
+    footerTagline: "ನಿಮ್ಮ ಆರೋಗ್ಯ ಪ್ರಯಾಣದ ಆಪ್ತ ಸಂಗಾತಿ.",
+    footerCompanion: "ನಿಮ್ಮ ಆರೋಗ್ಯ ಪ್ರಯಾಣದ ಆಪ್ತ ಸಂಗಾತಿ.",
+    footerDisclaimer: "ಕೇವಲ ಶಿಕ್ಷಣ ಮತ್ತು ಬೆಂಬಲಕ್ಕಾಗಿ ಮಾತ್ರ. ವೃತ್ತಿಪರ ವೈದ್ಯಕೀಯ ಆರೈಕೆಗೆ ಪರ್ಯಾಯವಲ್ಲ.",
   },
   தமிழ்: {
     home: "முகப்பு",
@@ -705,6 +732,9 @@ const translations = {
     heroSubtitle: "உங்கள் ஆரோக்கியம் ஒவ்வொரு நாளும் முக்கியம். நம்பகமான ஆரோக்கியக் கல்வியைப் பெறுங்கள், உங்கள் நல்வாழ்வைப் புரிந்துகொண்டு நம்பிக்கையுடன் அடுத்த அடியை எடுங்கள்.",
     heroPrimaryButton: "உங்கள் ஆரோக்கியத்தை ஆராயுங்கள்",
     heroSecondaryButton: "கண்டறிந்து கற்றுக்கொள்ளுங்கள்",
+    heroTrustTagline: "பெண்களை மனதில் கொண்டு உருவாக்கப்பட்ட, ஆதரவான தளம்.",
+    heroTagline: "பெண்களை மனதில் கொண்டு உருவாக்கப்பட்ட, ஆதரவான தளம்.",
+    heroTrustNote: "பெண்களை மனதில் கொண்டு உருவாக்கப்பட்ட, ஆதரவான தளம்.",
     trackerKicker: "உங்களுடன் ஒரு சிறிய சரிபார்ப்பு",
     trackerHeading: "உங்கள் ஆரோக்கியம், உங்கள் விருப்பம்",
     trackerIntro: "நீங்கள் எப்படி உணர்கிறீர்கள் என்பதன் தனிப்பட்ட பதிவை, ஒரு நாள் ஒரு நாளாக வைத்திருங்கள்.",
@@ -922,6 +952,12 @@ const translations = {
     reportsErrorDelete: "அறிக்கையை நீக்க முடியவில்லை.",
     reportsErrorFileType: "கோப்பு வகை அனுமதிக்கப்படவில்லை. அனுமதிக்கப்பட்டவை: .pdf, .png, .jpg, .jpeg",
     reportsErrorFileSize: "கோப்பு மிகப்பெரியது. அதிகபட்ச அளவு 5 MB.",
+    footerCare: "உங்களுக்கு முன்னுரிமை அளிக்கும் பராமரிப்பு",
+    footerKnowledge: "ஒவ்வொரு கட்டத்திற்குமான விழிப்புணர்வு",
+    footerLanguage: "உங்கள் மொழியில் சுகாதாரத் தகவல்கள்",
+    footerTagline: "உங்கள் ஆரோக்கியப் பயணத்தின் தோழி.",
+    footerCompanion: "உங்கள் ஆரோக்கியப் பயணத்தின் தோழி.",
+    footerDisclaimer: "கல்வி மற்றும் ஆதரவிற்காக மட்டுமே. தொழில்முறை மருத்துவ சிகிச்சைக்கு மாற்றாகாது.",
   },
   తెలుగు: {
     home: "హోమ్",
@@ -932,6 +968,9 @@ const translations = {
     heroSubtitle: "మీ ఆరోగ్యం ప్రతి రోజు ముఖ్యం. నమ్మదగిన ఆరోగ్య విద్యను పొందండి, మీ శ్రేయస్సును అర్థం చేసుకుని నమ్మకంతో తదుపరి అడుగు వేయండి.",
     heroPrimaryButton: "మీ ఆరోగ్యాన్ని అన్వేషించండి",
     heroSecondaryButton: "కనుగొనండి మరియు నేర్చుకోండి",
+    heroTrustTagline: "మహిళల సంరక్షణను దృష్టిలో ఉంచుకుని రూపొందించిన ఒక ఆప్త వేదిక.",
+    heroTagline: "మహిళల సంరక్షణను దృష్టిలో ఉంచుకుని రూపొందించిన ఒక ఆప్త వేదిక.",
+    heroTrustNote: "మహిళల సంరక్షణను దృష్టిలో ఉంచుకుని రూపొందించిన ఒక ఆప్త వేదిక.",
     trackerKicker: "మీతో ఒక చిన్న చెక్-ఇన్",
     trackerHeading: "మీ ఆరోగ్యం, మీ ఇష్టం",
     trackerIntro: "మీరు ఎలా అనుభవిస్తున్నారో దాని ప్రైవేట్ రికార్డును, ఒక రోజు ఒకసారి ఉంచుకోండి.",
@@ -1149,6 +1188,12 @@ const translations = {
     reportsErrorDelete: "నివేదికను తొలగించడం సాధ్యపడలేదు.",
     reportsErrorFileType: "ఈ ఫైల్ రకం అనుమతించబడదు. అనుమతించబడినవి: .pdf, .png, .jpg, .jpeg",
     reportsErrorFileSize: "ఫైల్ పరిమాణం చాలా పెద్దది. గరిష్ట పరిమాణం 5 MB.",
+    footerCare: "మీకు మొదటి ప్రాధాన్యతనిచ్చే సంరక్షణ",
+    footerKnowledge: "ప్రతి దశకు అవసరమైన జ్ఞానం",
+    footerLanguage: "మీ భాషలోనే ఆరోగ్య సమాచారం",
+    footerTagline: "మీ ఆరోగ్య ప్రయాణంలో ఒక ఆప్త సహచరి.",
+    footerCompanion: "మీ ఆరోగ్య ప్రయాణంలో ఒక ఆప్త సహచరి.",
+    footerDisclaimer: "కేవలం అవగాహన మరియు మద్దతు కోసం మాత్రమే. వృత్తిపరమైన వైద్య చికిత్సకు ప్రత్యామ్నాయం కాదు.",
   },
   বাংলা: {
     home: "হোম",
@@ -1159,6 +1204,9 @@ const translations = {
     heroSubtitle: "আপনার স্বাস্থ্য প্রতিদিনই গুরুত্বপূর্ণ। বিশ্বস্ত স্বাস্থ্য শিক্ষা পান, আপনার সুস্থতা বুঝুন এবং আত্মবিশ্বাসের সাথে পরবর্তী পদক্ষেপ নিন।",
     heroPrimaryButton: "আপনার স্বাস্থ্য অন্বেষণ করুন",
     heroSecondaryButton: "আবিষ্কার করুন ও শিখুন",
+    heroTrustTagline: "নারীদের কথা ভেবে তৈরি, একটি যত্নশীল ও সহায়ক মাধ্যম।",
+    heroTagline: "নারীদের কথা ভেবে তৈরি, একটি যত্নশীল ও সহায়ক মাধ্যম।",
+    heroTrustNote: "নারীদের কথা ভেবে তৈরি, একটি যত্নশীল ও সহায়ক মাধ্যম।",
     trackerKicker: "নিজের সঙ্গে একটি ছোট চেক-ইন",
     trackerHeading: "আপনার স্বাস্থ্য, আপনার পছন্দ",
     trackerIntro: "আপনি কেমন অনুভব করছেন তার একটি ব্যক্তিগত রেকর্ড রাখুন, একদিন একদিন করে।",
@@ -1376,6 +1424,12 @@ const translations = {
     reportsErrorDelete: "রিপোর্ট মোছা যায়নি।",
     reportsErrorFileType: "ফাইলের ধরন অনুমোদিত নয়। অনুমোদিত: .pdf, .png, .jpg, .jpeg",
     reportsErrorFileSize: "ফাইলটি খুব বড়। সর্বোচ্চ আকার ৫ MB।",
+    footerCare: "এমন যত্ন যা আপনাকে অগ্রাধিকার দেয়",
+    footerKnowledge: "প্রতিটি পর্যায়ের জন্য জ্ঞান",
+    footerLanguage: "আপনার ভাষায় স্বাস্থ্য সম্পর্কিত তথ্য",
+    footerTagline: "আপনার স্বাস্থ্য যাত্রার একজন নির্ভরযোগ্য সঙ্গী।",
+    footerCompanion: "আপনার স্বাস্থ্য যাত্রার একজন নির্ভরযোগ্য সঙ্গী।",
+    footerDisclaimer: "শুধুমাত্র শিক্ষা এবং সহায়তার জন্য। পেশাদার চিকিৎসা সেবার বিকল্প নয়।",
   },
 }
 
@@ -1776,7 +1830,7 @@ function App() {
 
                 <div className="trust-note">
                   <span className="trust-icon">♡</span>
-                  A supportive space, made with women in mind.
+                  {t.heroTrustTagline || t.heroTrustNote || t.heroTagline}
                 </div>
               </div>
 
@@ -1812,9 +1866,9 @@ function App() {
             </section>
 
             <section className="welcome-strip" aria-label="Our promise">
-              <div><span>♡</span><p>Care that puts <strong>you first</strong></p></div>
-              <div><span>✿</span><p>Knowledge for <strong>every stage</strong></p></div>
-              <div><span>⌁</span><p>Health information in <strong>your language</strong></p></div>
+              <div><span>♡</span><p>{t.footerCare}</p></div>
+              <div><span>✿</span><p>{t.footerKnowledge}</p></div>
+              <div><span>⌁</span><p>{t.footerLanguage}</p></div>
             </section>
 
             <section className="assistant-section" id="assistant-cta">
@@ -2105,9 +2159,9 @@ function App() {
           <span className="brand-mark">s</span>
           <span>sakhi<span className="brand-accent">.</span></span>
         </a>
-        <p>A companion for your health journey.</p>
+        <p>{t.footerTagline}</p>
         <span className="footer-disclaimer">
-          For education and support only. Not a substitute for professional medical care.
+          {t.footerDisclaimer}
         </span>
       </footer>
     </div>

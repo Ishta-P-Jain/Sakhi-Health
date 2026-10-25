@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   deleteReport,
+  downloadReport,
   fetchReports,
   uploadReport,
 } from '../../services/api'
@@ -112,8 +113,8 @@ export default function Reports({ t }) {
       link.click()
       document.body.removeChild(link)
       window.setTimeout(() => URL.revokeObjectURL(objectUrl), 0)
-    } catch {
-      setError('Unable to download report.')
+    } catch (err) {
+      setErrorCode(err.status === 401 ? 'session_expired' : 'download_failed')
     }
   }
 
@@ -124,13 +125,15 @@ export default function Reports({ t }) {
         ? (t?.reportsErrorLoad || 'Unable to load reports.')
         : errorCode === 'upload_failed'
           ? (t?.reportsErrorUpload || 'Unable to upload report.')
-          : errorCode === 'delete_failed'
-            ? (t?.reportsErrorDelete || 'Unable to delete report.')
-            : errorCode === 'file_type'
-              ? (t?.reportsErrorFileType || 'File type not allowed. Allowed: .pdf, .png, .jpg, .jpeg')
-              : errorCode === 'file_size'
-                ? (t?.reportsErrorFileSize || 'File too large. Maximum size is 5 MB.')
-                : null
+          : errorCode === 'download_failed'
+            ? (t?.reportsErrorDownload || 'Unable to download report.')
+            : errorCode === 'delete_failed'
+              ? (t?.reportsErrorDelete || 'Unable to delete report.')
+              : errorCode === 'file_type'
+                ? (t?.reportsErrorFileType || 'File type not allowed. Allowed: .pdf, .png, .jpg, .jpeg')
+                : errorCode === 'file_size'
+                  ? (t?.reportsErrorFileSize || 'File too large. Maximum size is 5 MB.')
+                  : null
   )
 
   if (loading) {
@@ -236,12 +239,8 @@ export default function Reports({ t }) {
                   <button
                     type="button"
                     className="button-link"
-<<<<<<< HEAD
                     onClick={() => handleDownload(r.id, r.original_filename)}
-=======
-                    onClick={() => handleDownload(r.id)}
                     aria-label={`${t?.actionDownload || 'Download'} ${r.original_filename}`}
->>>>>>> origin/main
                   >
                     {t?.actionDownload || 'Download'}
                   </button>

@@ -52,13 +52,11 @@ export async function request(path, { method = 'GET', body, timeoutMs = 30000, r
       }
       throw new ApiError(res.status, typeof detail === 'string' ? detail : '')
     }
-<<<<<<< HEAD
-    if (res.status === 204) return null
-    if (responseType === 'blob') return await res.blob()
-    return await res.json()
-=======
     if (res.status === 204) {
       return null
+    }
+    if (responseType === 'blob') {
+      return await res.blob()
     }
     const text = await res.text()
     if (!text) {
@@ -69,7 +67,6 @@ export async function request(path, { method = 'GET', body, timeoutMs = 30000, r
     } catch {
       return text
     }
->>>>>>> origin/main
   } finally {
     clearTimeout(timer)
   }

@@ -5,6 +5,7 @@ import {
   deleteHealthLog,
   downloadReport,
   registerAndLogin,
+  request,
   setAuthToken,
   uploadReport,
 } from '../src/services/api.js'
@@ -34,10 +35,30 @@ test('registration signs in with the newly created credentials', async () => {
   assert.equal(session.access_token, 'session-token')
 })
 
+test('registration identifies when account creation succeeds but sign-in fails', async () => {
+  globalThis.fetch = async (url) => {
+    if (url.endsWith('/api/auth/register')) {
+      return Response.json({ id: 'user-1', email: 'user@example.com' }, { status: 201 })
+    }
+    return Response.json({ detail: 'sign-in unavailable' }, { status: 401 })
+  }
+
+  await assert.rejects(
+    registerAndLogin({ email: 'user@example.com', password: 'password123' }),
+    (error) => error.accountCreated === true && error.status === 401,
+  )
+})
+
 test('successful no-content deletes resolve without parsing JSON', async () => {
   globalThis.fetch = async () => new Response(null, { status: 204 })
 
   assert.equal(await deleteHealthLog('log-1'), null)
+})
+
+test('successful text responses remain available as text', async () => {
+  globalThis.fetch = async () => new Response('plain text response', { status: 200 })
+
+  assert.equal(await request('/api/example'), 'plain text response')
 })
 
 test('report uploads send FormData without overriding its content type', async () => {

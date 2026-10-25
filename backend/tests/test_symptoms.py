@@ -24,6 +24,7 @@ def test_create_and_list_symptom_log(auth_client):
 
 
 def test_create_symptom_invalid_severity(client):
+    register_user(client)
     token = _token(client)
     r = client.post(
         "/api/symptoms",

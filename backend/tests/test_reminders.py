@@ -25,6 +25,7 @@ def test_create_and_list_reminder(auth_client):
 
 
 def test_create_reminder_invalid_kind_and_frequency(client):
+    register_user(client)
     token = _token(client)
     r = client.post(
         "/api/reminders",

@@ -1,16 +1,32 @@
-# React + Vite
+# Sakhi — Women's Healthcare Companion
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A multilingual women's health platform for rural and urban women: an AI health assistant (text + voice),
+a nearby healthcare finder, health tracking, doctor-verified education and medical-report uploads.
+Sakhi supports healthcare decisions; it does not replace doctors or give diagnoses.
 
-Currently, two official plugins are available:
+## Structure
+```
+frontend/   React 19 + Vite + react-router (Member 1: main UI · Member 3: chatbot + finder)
+backend/    FastAPI (Member 2: core APIs & persistence · Member 3: AI + healthcare finder)
+docs/       API contracts, setup & deployment guide, demo script
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Quick start
+```bash
+# backend  (terminal 1)
+cd backend && python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements-dev.txt
+cp .env.example .env        # add ANTHROPIC_API_KEY
+uvicorn app.main:app --reload --port 8000
 
-## React Compiler
+# frontend (terminal 2)
+cd frontend && npm install && npm run dev      # http://localhost:5173  (proxies /api -> :8000)
+```
+Details, deployment and troubleshooting: [docs/SETUP.md](docs/SETUP.md).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features (Member 3 scope)
+- **Multilingual assistant** — English, हिन्दी, ಕನ್ನಡ, தமிழ், తెలుగు, বাংলা; voice in/out via the browser; curated knowledge base; fixed emergency/self-harm/abuse responses that bypass the model; offline fallback.
+- **Healthcare finder** — hospitals, clinics, labs, pharmacies from OpenStreetMap; GPS or town/pincode search; map + list; directions and call links.
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Docs
+[API contracts](docs/API_CONTRACTS.md) · [Setup & deploy](docs/SETUP.md) · [Demo script & test checklist](docs/DEMO_SCRIPT.md)

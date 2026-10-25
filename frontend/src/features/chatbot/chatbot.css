@@ -1,0 +1,51 @@
+/* Additions on top of App.css chat styles. Prefix cb- = chatbot. */
+.cb-bubble { display: flex; flex-direction: column; gap: 6px; }
+.cb-text { white-space: pre-wrap; }
+
+.cb-note { color: var(--color-text-muted); font-size: 11px; line-height: 1.5; }
+
+.chat-status.cb-offline { color: #a4562f; }
+
+.cb-speak {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; margin-top: 2px;
+  border: 1px solid var(--color-border); border-radius: 999px;
+  background: var(--color-bg); color: var(--color-primary);
+  font: inherit; font-size: 11.5px; font-weight: 600; cursor: pointer;
+}
+.cb-speak:hover { background: #fff; }
+.cb-speak:focus-visible, .chat-composer .cb-mic:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+.chat-message.cb-emergency {
+  background: #fff3ee; border: 1px solid #e3a58f; border-left: 4px solid #c4492d; color: #5a2a1e;
+}
+.cb-urgent { color: #b23a1f; font-size: 11.5px; letter-spacing: 0.06em; }
+
+.cb-typing { flex-direction: row; gap: 5px; align-items: center; padding: 14px 16px; }
+.cb-typing i {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent);
+  animation: cb-bounce 1.2s infinite ease-in-out;
+}
+.cb-typing i:nth-child(2) { animation-delay: 0.15s; }
+.cb-typing i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes cb-bounce { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-4px); opacity: 1; } }
+
+.cb-mic-msg { margin: 0; padding: 6px 18px 0; background: #fffaf8; color: var(--color-text-muted); font-size: 12px; }
+.cb-mic-msg.live { color: var(--color-primary); font-weight: 600; }
+
+.chat-composer .cb-mic {
+  flex: 0 0 auto; width: 42px; padding: 0;
+  background: var(--color-accent-light); color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+.chat-composer .cb-mic:not(:disabled):hover { background: #f3dbe4; }
+.chat-composer .cb-mic.listening {
+  background: #c4492d; color: #fff; border-color: #c4492d;
+  animation: cb-pulse 1.4s infinite;
+}
+@keyframes cb-pulse { 0% { box-shadow: 0 0 0 0 rgba(196, 73, 45, .45); } 100% { box-shadow: 0 0 0 12px rgba(196, 73, 45, 0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .cb-typing i, .chat-composer .cb-mic.listening { animation: none; }
+}

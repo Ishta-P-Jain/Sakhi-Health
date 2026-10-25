@@ -1,7 +1,11 @@
 
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import './App.css'
 import { useNavigate, useLocation } from 'react-router-dom'
+import ChatPanel from './features/chatbot/ChatPanel.jsx'
+import HealthcareFinder from './features/healthcare/HealthcareFinder.jsx'
+import { finderNavLabel } from './features/healthcare/strings.js'
+import { useChat } from './hooks/useChat.js'
 
 const translations = {
   English: {
@@ -892,54 +896,23 @@ const [wellnessDate, setWellnessDate] = useState(
   new Date().toLocaleDateString("en-CA")
 );
 
-const [chatMessages, setChatMessages] = useState([
-  {
-    role: "assistant",
-    replyKey: "initialGreeting",
-    text: translations.English.chatInitialGreeting,
-  }
-]);
-
-const [chatInput, setChatInput] = useState("");
-const [chatTopic, setChatTopic] = useState("");
-
-function clearChat() {
-  setChatMessages([
-    {
-      role: "assistant",
-      replyKey: "initialGreeting",
-      text: t.chatInitialGreeting,
-    }
-  ]);
-  setChatInput("");
-  setChatTopic("");
-}
-
-function sendChatMessage(message = chatInput) {
-  const questionText = message.trim();
-  if (!questionText) return;
-
-  const replyKey = determineReplyKey(questionText);
-  const replyText = getReplyText(replyKey, language);
-
-  setChatMessages((messages) => [
-    ...messages,
-    { role: "user", text: questionText },
-    { role: "assistant", replyKey, text: replyText },
-  ]);
-
-  setChatInput("");
-  setChatTopic("");
-}
-
-
-
+// Chat is now backed by the FastAPI /api/chat endpoint (see hooks/useChat.js).
+// If the API is unreachable we fall back to the original canned replies below.
+const offlineReply = useCallback((text) => {
+  const replyKey = determineReplyKey(text)
+  return { replyKey, text: getReplyText(replyKey, language) }
+}, [language])
+const chat = useChat({ language, offlineReply })
+const sendChatMessage = chat.send
+const renderChatText = (message) =>
+  message.replyKey ? getReplyText(message.replyKey, language) || message.text : message.text
 
   const routes = {
     home: '/',
     tracker: '/tracker',
     learn: '/learn',
     assistant: '/assistant',
+    finder: '/finder',
   }
   const knownPaths = Object.values(routes)
   const isNotFound = !knownPaths.includes(location.pathname)
@@ -978,6 +951,7 @@ function sendChatMessage(message = chatInput) {
             { label: t.tracker, route: 'tracker' },
             { label: t.learn, route: 'learn' },
             { label: t.assistant, route: 'assistant' },
+            { label: finderNavLabel[language] || finderNavLabel.English, route: 'finder' },
           ].map(({ label, route }) => {
             const isActive = location.pathname === (routes[route] || '/')
             return (
@@ -1385,59 +1359,7 @@ function sendChatMessage(message = chatInput) {
       </div>
     </div>
 
-    <div className="chat-panel">
-      <div className="chat-panel-header">
-        <div className="chat-avatar small">S</div>
-        <div className="chat-panel-title">
-          <strong>{t.assistantPanelTitle}</strong>
-          <span>{t.assistantPanelSubtitle}</span>
-        </div>
-        <div className="chat-actions">
-          <span className="chat-status">{t.assistantStatusDemo}</span>
-          <button type="button" onClick={clearChat} aria-label={t.assistantClearChatAria}>
-            {t.assistantClearChat}
-          </button>
-        </div>
-      </div>
-      <div className="chat-messages" aria-live="polite">
-        {chatMessages.map((message, index) => {
-          const displayText =
-            message.role === "assistant" && message.replyKey
-              ? getReplyText(message.replyKey, language) || message.text
-              : message.text;
-          return (
-            <div
-              key={`${index}-${message.role}`}
-              className={`chat-message ${message.role}`}
-            >
-              {displayText}
-            </div>
-          );
-        })}
-      </div>
-
-      <form
-        className="chat-composer"
-        onSubmit={(event) => {
-          event.preventDefault();
-          sendChatMessage();
-        }}
-      >
-        <input
-          aria-label={t.assistantInputAria}
-          value={chatInput}
-          onChange={(event) => setChatInput(event.target.value)}
-          placeholder={t.assistantInputPlaceholder}
-        />
-        <button type="submit" disabled={!chatInput.trim()}>
-          {t.assistantSend} ↗
-        </button>
-      </form>
-
-      <p className="chat-disclaimer">
-        {t.assistantDisclaimer}
-      </p>
-    </div>
+    <ChatPanel chat={chat} t={t} language={language} renderText={renderChatText} />
   </div>
 </section>
   </>
@@ -1470,6 +1392,8 @@ function sendChatMessage(message = chatInput) {
         </section>
         </>
 )}
+
+        {location.pathname === '/finder' && <HealthcareFinder language={language} />}
 
         {isNotFound && (
           <section className="section not-found-section" aria-label="Page not found">

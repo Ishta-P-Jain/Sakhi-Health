@@ -1,0 +1,21 @@
+# Render blueprint for the backend. Frontend goes on Vercel/Netlify (see docs/SETUP.md).
+services:
+  - type: web
+    name: sakhi-api
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/ping
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.3"
+      - key: LLM_MODEL
+        value: claude-haiku-5-5
+      - key: ANTHROPIC_API_KEY
+        sync: false          # paste in the Render dashboard, never commit
+      - key: CORS_ORIGINS
+        sync: false          # e.g. https://sakhi.vercel.app
+      - key: GEOCODER_USER_AGENT
+        sync: false          # e.g. sakhi-hackathon/0.1 (contact: you@example.com)

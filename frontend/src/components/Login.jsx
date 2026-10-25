@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { login, setAuthToken } from '../../services/api'
+import { login, setAuthToken } from '../services/api'
 
 export default function Login({ onLogin, onSwitchToRegister }) {
   const [email, setEmail] = useState('')

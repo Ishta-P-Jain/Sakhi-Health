@@ -29,5 +29,17 @@ class Settings:
     ]
     chat_rate_limit: int = _int("CHAT_RATE_LIMIT_PER_MINUTE", 20)
 
+    # Database: defaults to a local SQLite file; set DATABASE_URL for PostgreSQL etc.
+    database_url: str = os.getenv("DATABASE_URL", "sqlite:///./sakhi.db")
+
+    # Auth / JWT
+    secret_key: str = os.getenv("SECRET_KEY", "dev-secret-change-me")
+    algorithm: str = os.getenv("JWT_ALGORITHM", "HS256")
+    access_token_expire_minutes: int = _int("ACCESS_TOKEN_EXPIRE_MINUTES", 60 * 24 * 7)
+
+    # File storage for medical reports (kept outside public static dirs)
+    upload_dir: str = os.getenv("UPLOAD_DIR", "uploads")
+    max_upload_mb: int = _int("MAX_UPLOAD_MB", 5)
+
 
 settings = Settings()
